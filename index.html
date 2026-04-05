@@ -364,36 +364,25 @@
 
     /* ─── RESSOURCES ─── */
     #ressources { background: var(--dark2); }
-    .res-sub { font-size: .78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin: 3rem 0 1.2rem; display: block; }
-    .pod-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.2rem; }
-    .pod-card {
-      background: var(--dark3); border: 1px solid rgba(201,168,76,.08); border-radius: 14px;
-      overflow: hidden; transition: transform .25s, border-color .25s, box-shadow .25s;
-    }
-    .pod-card:hover { transform: translateY(-4px); border-color: rgba(201,168,76,.28); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
-    .pod-img { width: 100%; height: 150px; object-fit: cover; filter: brightness(.7); }
-    .pod-body { padding: 1.1rem 1.3rem; }
-    .pod-cat { font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .35rem; display: block; }
-    .pod-body h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: .2rem; }
-    .pod-host { font-size: .76rem; color: var(--muted); margin-bottom: .5rem; display: block; }
-    .pod-body p { font-size: .81rem; color: var(--muted); line-height: 1.6; margin-bottom: .9rem; }
-    .pod-btn {
-      font-size: .72rem; font-weight: 700; padding: .3rem .85rem; border-radius: 99px;
-      text-decoration: none; border: 1px solid rgba(201,168,76,.3); color: var(--gold);
-      display: inline-block; transition: all .2s;
-    }
-    .pod-btn:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
-    .books-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1rem; }
-    .book-card {
-      background: var(--dark3); border: 1px solid rgba(201,168,76,.08); border-radius: 12px;
-      padding: 1.2rem 1.4rem; display: flex; gap: 1rem; align-items: flex-start;
-      transition: transform .22s, border-color .22s;
-    }
-    .book-card:hover { transform: translateX(4px); border-color: rgba(201,168,76,.25); }
-    .book-emoji { font-size: 1.9rem; flex-shrink: 0; margin-top: .1rem; }
-    .book-info h5 { font-size: .9rem; color: #fff; font-weight: 600; margin-bottom: .2rem; line-height: 1.3; }
-    .book-info .book-author { font-size: .74rem; color: var(--gold); display: block; margin-bottom: .3rem; }
-    .book-info p { font-size: .79rem; color: var(--muted); line-height: 1.55; }
+    .res-sub { font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:3rem 0 1.2rem;display:block; }
+    .pod-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem; }
+    .pod-card { background:var(--dark3);border:1px solid rgba(201,168,76,.08);border-radius:14px;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s; }
+    .pod-card:hover { transform:translateY(-4px);border-color:rgba(201,168,76,.28);box-shadow:0 12px 32px rgba(0,0,0,.3); }
+    .pod-img { width:100%;height:150px;object-fit:cover;filter:brightness(.7); }
+    .pod-body { padding:1.1rem 1.3rem; }
+    .pod-cat { font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;display:block; }
+    .pod-body h4 { font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:.2rem; }
+    .pod-host { font-size:.76rem;color:var(--muted);margin-bottom:.5rem;display:block; }
+    .pod-body p { font-size:.81rem;color:var(--muted);line-height:1.6;margin-bottom:.9rem; }
+    .pod-btn { font-size:.72rem;font-weight:700;padding:.3rem .85rem;border-radius:99px;text-decoration:none;border:1px solid rgba(201,168,76,.3);color:var(--gold);display:inline-block;transition:all .2s; }
+    .pod-btn:hover { background:var(--gold);color:var(--dark);border-color:var(--gold); }
+    .books-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem; }
+    .book-card { background:var(--dark3);border:1px solid rgba(201,168,76,.08);border-radius:12px;padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:transform .22s,border-color .22s; }
+    .book-card:hover { transform:translateX(4px);border-color:rgba(201,168,76,.25); }
+    .book-emoji { font-size:1.9rem;flex-shrink:0;margin-top:.1rem; }
+    .book-info h5 { font-size:.9rem;color:#fff;font-weight:600;margin-bottom:.2rem;line-height:1.3; }
+    .book-info .book-author { font-size:.74rem;color:var(--gold);display:block;margin-bottom:.3rem; }
+    .book-info p { font-size:.79rem;color:var(--muted);line-height:1.55; }
 
     /* ─── FOOTER ─── */
     footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,.1); padding: 2.8rem 1.5rem; text-align: center; }
@@ -532,7 +521,7 @@
         <div class="mod-body">
           <span class="mod-tag">Module 06 — Recrutement</span>
           <h3>Recruter & Intégrer les talents</h3>
-          <p>Choisissez les bonnes personnes et offrez-leur un accueil qui les donne envie de rester.</p>
+          <p>Choisissez les bonnes personnes et offrez-leur un accueil qui leur donne envie de rester.</p>
         </div>
         <div class="mod-footer"><span>7 points clés</span><span class="mod-arrow">→</span></div>
       </div>
@@ -541,7 +530,7 @@
         <div class="mod-body">
           <span class="mod-tag">Module 07 — Bien-être</span>
           <h3>Bien-être & Prévention du burn-out</h3>
-          <p>Protégez votre équipe de l'épuisement et créez un environnement où il fait bon travailler.</p>
+          <p>Protégez votre équipe de l'épuisement et créez un endroit où il fait bon travailler.</p>
         </div>
         <div class="mod-footer"><span>7 points clés</span><span class="mod-arrow">→</span></div>
       </div>
@@ -577,97 +566,6 @@
       <div class="tip rev"><div class="tip-icon">🤝</div><h4>Cultivez la cohésion</h4><p>Favorisez la communication interdépartementale et célébrez les succès collectifs.</p></div>
       <div class="tip rev"><div class="tip-icon">🛡️</div><h4>Anticipez les crises</h4><p>Élaborez des plans d'urgence. Un manager préparé garde son sang-froid et rassure son équipe.</p></div>
       <div class="tip rev"><div class="tip-icon">✨</div><h4>Montrez l'exemple</h4><p>Votre comportement définit la culture de l'hôtel. Appliquez en premier les standards que vous demandez.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- RESSOURCES -->
-<section id="ressources">
-  <div class="container">
-    <div class="rev">
-      <span class="s-tag">Aller plus loin</span>
-      <h2 class="s-title">Ressources pour progresser</h2>
-      <p class="s-sub">Les meilleurs podcasts et livres pour continuer à te former, à ton rythme, depuis ton téléphone.</p>
-    </div>
-
-    <span class="res-sub rev">🎙️ Podcasts recommandés</span>
-    <div class="pod-grid">
-      <div class="pod-card rev">
-        <img class="pod-img" src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=700&q=75" alt="Podcast management" />
-        <div class="pod-body">
-          <span class="pod-cat">Management · Français</span>
-          <h4>Outils du Manager</h4>
-          <span class="pod-host">par Cédric Watine</span>
-          <p>Des conseils pratiques et concrets sur le management, la communication et le leadership. Parfait pour progresser semaine après semaine.</p>
-          <a class="pod-btn" href="https://open.spotify.com/search/outils%20du%20manager" target="_blank">🎧 Écouter sur Spotify →</a>
-        </div>
-      </div>
-      <div class="pod-card rev">
-        <img class="pod-img" src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=700&q=75" alt="Podcast entrepreneuriat" />
-        <div class="pod-body">
-          <span class="pod-cat">Leadership · Français</span>
-          <h4>Génération Do It Yourself</h4>
-          <span class="pod-host">par Matthieu Stefani</span>
-          <p>Des interviews longues de leaders et entrepreneurs qui racontent leur parcours. Inspirant pour comprendre comment les meilleurs pensent et agissent.</p>
-          <a class="pod-btn" href="https://open.spotify.com/search/generation%20do%20it%20yourself" target="_blank">🎧 Écouter sur Spotify →</a>
-        </div>
-      </div>
-      <div class="pod-card rev">
-        <img class="pod-img" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=700&q=75" alt="Podcast business" />
-        <div class="pod-body">
-          <span class="pod-cat">Business · Français</span>
-          <h4>Le Board</h4>
-          <span class="pod-host">par Matthieu Stefani</span>
-          <p>Les décisions difficiles, les crises, les succès — des dirigeants racontent comment ils gèrent leur équipe et leur entreprise au quotidien.</p>
-          <a class="pod-btn" href="https://open.spotify.com/search/le%20board%20podcast" target="_blank">🎧 Écouter sur Spotify →</a>
-        </div>
-      </div>
-      <div class="pod-card rev">
-        <img class="pod-img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&q=75" alt="Podcast hôtellerie" />
-        <div class="pod-body">
-          <span class="pod-cat">Hôtellerie · Français</span>
-          <h4>Hôtellerie & Leadership</h4>
-          <span class="pod-host">L'Hôtellerie Restauration</span>
-          <p>Spécial hôtellerie-restauration : tendances, gestion d'équipe, service client et stratégie. La référence du secteur en France.</p>
-          <a class="pod-btn" href="https://open.spotify.com/search/hotellerie%20restauration%20podcast" target="_blank">🎧 Écouter sur Spotify →</a>
-        </div>
-      </div>
-    </div>
-
-    <span class="res-sub rev">📚 Livres recommandés</span>
-    <div class="books-grid">
-      <div class="book-card rev">
-        <div class="book-emoji">⏱️</div>
-        <div class="book-info">
-          <h5>Le Manager Minute</h5>
-          <span class="book-author">Ken Blanchard & Spencer Johnson</span>
-          <p>Un classique. En 3 règles simples, tu apprends à fixer des objectifs, féliciter et recadrer ton équipe. Lisible en 2h.</p>
-        </div>
-      </div>
-      <div class="book-card rev">
-        <div class="book-emoji">🧠</div>
-        <div class="book-info">
-          <h5>L'Intelligence Émotionnelle</h5>
-          <span class="book-author">Daniel Goleman</span>
-          <p>Comprendre et gérer ses émotions et celles des autres. La compétence n°1 d'un bon manager selon les études.</p>
-        </div>
-      </div>
-      <div class="book-card rev">
-        <div class="book-emoji">🚀</div>
-        <div class="book-info">
-          <h5>De la Performance à l'Excellence</h5>
-          <span class="book-author">Jim Collins</span>
-          <p>Pourquoi certaines entreprises deviennent exceptionnelles ? Les réponses s'appliquent parfaitement à l'hôtellerie.</p>
-        </div>
-      </div>
-      <div class="book-card rev">
-        <div class="book-emoji">💡</div>
-        <div class="book-info">
-          <h5>La Vérité sur ce qui nous Motive</h5>
-          <span class="book-author">Daniel Pink</span>
-          <p>Comprendre ce qui motive vraiment les gens au travail. Indispensable pour motiver ton équipe autrement qu'avec l'argent.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -745,6 +643,95 @@
       <div class="score-btns">
         <button class="btn btn-ghost" onclick="replayQuiz()">↺ Recommencer ce quiz</button>
         <button class="btn btn-gold"  onclick="backToChoice()">→ Choisir un autre quiz</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESSOURCES -->
+<section id="ressources">
+  <div class="container">
+    <div class="rev">
+      <span class="s-tag">Aller plus loin</span>
+      <h2 class="s-title">Ressources pour progresser</h2>
+      <p class="s-sub">Les meilleurs podcasts et livres pour continuer à te former, à ton rythme, depuis ton téléphone.</p>
+    </div>
+    <span class="res-sub rev">🎙️ Podcasts recommandés</span>
+    <div class="pod-grid">
+      <div class="pod-card rev">
+        <img class="pod-img" src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=700&q=75" alt="Podcast" />
+        <div class="pod-body">
+          <span class="pod-cat">Management · Français</span>
+          <h4>Outils du Manager</h4>
+          <span class="pod-host">par Cédric Watine</span>
+          <p>Des conseils pratiques et concrets chaque semaine sur le management et la communication. Parfait pour progresser à son rythme.</p>
+          <a class="pod-btn" href="https://open.spotify.com/search/outils%20du%20manager" target="_blank">🎧 Écouter sur Spotify →</a>
+        </div>
+      </div>
+      <div class="pod-card rev">
+        <img class="pod-img" src="https://images.unsplash.com/photo-1589903308904-1010c2294adc?w=700&q=75" alt="Podcast" />
+        <div class="pod-body">
+          <span class="pod-cat">Leadership · Français</span>
+          <h4>Génération Do It Yourself</h4>
+          <span class="pod-host">par Matthieu Stefani</span>
+          <p>Des interviews de leaders et entrepreneurs qui racontent leur parcours. Très inspirant pour comprendre comment les meilleurs pensent.</p>
+          <a class="pod-btn" href="https://open.spotify.com/search/generation%20do%20it%20yourself" target="_blank">🎧 Écouter sur Spotify →</a>
+        </div>
+      </div>
+      <div class="pod-card rev">
+        <img class="pod-img" src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=700&q=75" alt="Podcast" />
+        <div class="pod-body">
+          <span class="pod-cat">Business · Français</span>
+          <h4>Le Board</h4>
+          <span class="pod-host">par Matthieu Stefani</span>
+          <p>Les décisions difficiles, les crises, les succès — des dirigeants racontent comment ils gèrent leur équipe au quotidien.</p>
+          <a class="pod-btn" href="https://open.spotify.com/search/le%20board%20podcast%20matthieu%20stefani" target="_blank">🎧 Écouter sur Spotify →</a>
+        </div>
+      </div>
+      <div class="pod-card rev">
+        <img class="pod-img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&q=75" alt="Podcast hôtellerie" />
+        <div class="pod-body">
+          <span class="pod-cat">Hôtellerie · Français</span>
+          <h4>Hôtellerie & Leadership</h4>
+          <span class="pod-host">L'Hôtellerie Restauration</span>
+          <p>Tendances, gestion d'équipe, service client et stratégie hôtelière. La référence du secteur en France.</p>
+          <a class="pod-btn" href="https://open.spotify.com/search/hotellerie%20restauration" target="_blank">🎧 Écouter sur Spotify →</a>
+        </div>
+      </div>
+    </div>
+    <span class="res-sub rev">📚 Livres recommandés</span>
+    <div class="books-grid">
+      <div class="book-card rev">
+        <div class="book-emoji">⏱️</div>
+        <div class="book-info">
+          <h5>Le Manager Minute</h5>
+          <span class="book-author">Ken Blanchard & Spencer Johnson</span>
+          <p>En 3 règles simples, apprends à fixer des objectifs, féliciter et recadrer ton équipe. Lisible en 2 heures.</p>
+        </div>
+      </div>
+      <div class="book-card rev">
+        <div class="book-emoji">🧠</div>
+        <div class="book-info">
+          <h5>L'Intelligence Émotionnelle</h5>
+          <span class="book-author">Daniel Goleman</span>
+          <p>Comprendre et gérer ses émotions et celles des autres. La compétence n°1 d'un bon manager selon les études.</p>
+        </div>
+      </div>
+      <div class="book-card rev">
+        <div class="book-emoji">🚀</div>
+        <div class="book-info">
+          <h5>De la Performance à l'Excellence</h5>
+          <span class="book-author">Jim Collins</span>
+          <p>Pourquoi certaines équipes deviennent exceptionnelles ? Les réponses s'appliquent parfaitement à l'hôtellerie.</p>
+        </div>
+      </div>
+      <div class="book-card rev">
+        <div class="book-emoji">💡</div>
+        <div class="book-info">
+          <h5>La Vérité sur ce qui nous Motive</h5>
+          <span class="book-author">Daniel Pink</span>
+          <p>Comprendre ce qui motive vraiment les gens au travail — indispensable pour motiver ton équipe autrement qu'avec l'argent.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -914,48 +901,25 @@ document.addEventListener('click', e => {
 });
 
 // ═══════════════════════════ DICTIONNAIRE SEARCH ══════════════════════════
-async function searchDict() {
-  const raw   = document.getElementById('dictInput').value.trim();
-  const input = raw.toLowerCase();
+function searchDict() {
+  const input = document.getElementById('dictInput').value.trim().toLowerCase();
   const result = document.getElementById('dictResult');
   if (!input) return;
 
-  result.style.display = 'block';
-
-  // 1) Cherche dans le glossaire hôtelier d'abord
-  const exactKey   = Object.keys(GLOSSARY).find(k => k.toLowerCase() === input);
+  // Cherche correspondance exacte d'abord, puis partielle
+  const exactKey = Object.keys(GLOSSARY).find(k => k.toLowerCase() === input);
   const partialKey = !exactKey && Object.keys(GLOSSARY).find(k =>
     k.toLowerCase().includes(input) || input.includes(k.toLowerCase())
   );
   const key = exactKey || partialKey;
 
+  result.style.display = 'block';
   if (key) {
     result.className = 'dict-result found';
-    result.innerHTML = `<span style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;">🏨 Définition hôtelière</span><span class="dict-result-word">${key} :</span> ${GLOSSARY[key]}`;
-    return;
-  }
-
-  // 2) Pas dans le glossaire → cherche sur Wiktionnaire
-  result.className = 'dict-result found';
-  result.innerHTML = `<span style="color:var(--muted);font-size:.85rem;">⏳ Recherche de "<strong style="color:#fff">${raw}</strong>"...</span>`;
-
-  try {
-    const word = encodeURIComponent(raw);
-    const res  = await fetch(`https://fr.wiktionary.org/api/rest_v1/page/summary/${word}`);
-    if (!res.ok) throw new Error();
-    const data = await res.json();
-    const extract = data.extract || '';
-    if (!extract) throw new Error();
-
-    // Prend la première phrase, max 280 caractères
-    let def = extract.split(/[.!?]/)[0].trim() + '.';
-    if (def.length > 280) def = def.slice(0, 280) + '...';
-
-    result.className = 'dict-result found';
-    result.innerHTML = `<span style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:.3rem;">🌐 Définition générale</span><span class="dict-result-word">${raw} :</span> ${def}`;
-  } catch(e) {
+    result.innerHTML = `<span class="dict-result-word">${key} :</span>${GLOSSARY[key]}`;
+  } else {
     result.className = 'dict-result notfound';
-    result.innerHTML = `❌ Mot "<strong>${raw}</strong>" introuvable. Vérifie l'orthographe et réessaie.`;
+    result.innerHTML = `❌ Le mot "<strong>${input}</strong>" n'est pas encore dans notre dictionnaire. Essaie un autre mot ou vérifie l'orthographe.`;
   }
 }
 
@@ -995,27 +959,25 @@ const MODS = [
     simple:"En clair : bien communiquer c'est savoir parler ET écouter. En tant que manager, vous devez expliquer clairement ce que vous attendez, donner du feedback sans blesser, et gérer les tensions avant qu'elles deviennent de gros problèmes. Ça s'apprend et ça se pratique tous les jours.",
     intro:"La communication est la colonne vertébrale de votre management. Savoir s'exprimer clairement, écouter activement et gérer les tensions sont des compétences qui se travaillent.",
     pts:["Pratiquez l'écoute active : reformulez, posez des questions ouvertes, ne coupez pas la parole.","Adaptez votre communication selon les personnes et les situations.","En cas de conflit entre collaborateurs, organisez une médiation structurée en privé.","Face à un client mécontent, validez ses émotions avant de proposer une solution.","Communiquez les mauvaises nouvelles rapidement et honnêtement, avec un plan d'action.","Utilisez des outils digitaux pour fluidifier la communication entre départements.","Développez l'intelligence émotionnelle de vos équipes par des formations régulières."]
-  }
-];
-
+  },
   {
     tag:'Module 06 — Recrutement', title:"Recruter & Intégrer les talents",
     img:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80',
-    simple:"En clair : recruter c'est choisir la bonne personne pour le bon poste. Mais ce n'est pas tout — une fois recrutée, il faut bien l'accueillir et l'intégrer. Un bon recrutement + une bonne intégration = un employé qui reste longtemps et qui donne le meilleur de lui-même. Et ça, ça évite de tout recommencer tous les 3 mois.",
-    intro:"Recruter les bonnes personnes et les intégrer correctement est l'une des compétences les plus précieuses d'un manager hôtelier. Un employé bien choisi et bien accueilli reste plus longtemps et performe mieux.",
+    simple:"En clair : recruter c'est choisir la bonne personne pour le bon poste. Mais ce n'est pas tout — une fois recrutée, il faut bien l'accueillir et l'intégrer. Un bon recrutement + une bonne intégration = un employé qui reste longtemps et qui donne le meilleur de lui-même.",
+    intro:"Recruter les bonnes personnes et les intégrer correctement est l'une des compétences les plus précieuses d'un manager. Un employé bien choisi et bien accueilli reste plus longtemps et performe mieux.",
     pts:["Définissez clairement le profil recherché avant de publier l'offre d'emploi.","Privilégiez l'attitude et la motivation sur l'expérience pure : les compétences se forment, pas le caractère.","Préparez un processus d'intégration structuré sur les 30 premiers jours.","Assignez un collègue référent à chaque nouvel employé pour les premières semaines.","Fixez des objectifs progressifs et mesurables pour la période d'essai.","Organisez des points réguliers les premières semaines pour détecter les difficultés tôt.","Célébrez la fin de la période d'essai : c'est une étape importante pour la fidélisation."]
   },
   {
     tag:'Module 07 — Bien-être', title:"Bien-être & Prévention du burn-out",
     img:'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=900&q=80',
-    simple:"En clair : un employé épuisé ne peut pas bien travailler. En hôtellerie, les horaires sont longs et la pression est forte. Votre rôle c'est de faire attention à votre équipe — repérer les signes de fatigue avant qu'il soit trop tard, équilibrer les charges de travail, et créer un endroit où les gens ont envie de venir travailler.",
-    intro:"Le bien-être de votre équipe n'est pas un luxe, c'est une nécessité opérationnelle. Un hôtel dont les équipes sont épanouies livre un service supérieur et réduit drastiquement son turnover.",
-    pts:["Apprenez à reconnaître les signes précoces du burn-out : irritabilité, absentéisme, perte de motivation.","Respectez les temps de repos légaux et évitez les plannings anarchiques de dernière minute.","Créez des espaces de parole réguliers où les employés peuvent s'exprimer sans jugement.","Célébrez les réussites collectives et reconnaissez les efforts individuels.","Formez vos chefs d'équipe à la détection du mal-être.","Mettez en place des petits rituels d'équipe : café collectif, repas partagé, moments de légèreté.","Montrez l'exemple : un manager qui se surcharge et ne prend pas de pause envoie le mauvais signal."]
+    simple:"En clair : un employé épuisé ne peut pas bien travailler. En hôtellerie les horaires sont longs et la pression est forte. Votre rôle c'est de faire attention à votre équipe — repérer les signes de fatigue avant qu'il soit trop tard, équilibrer les charges, et créer un endroit où les gens ont envie de venir travailler.",
+    intro:"Le bien-être de votre équipe n'est pas un luxe, c'est une nécessité. Un hôtel dont les équipes sont épanouies livre un service supérieur et réduit drastiquement son turnover.",
+    pts:["Apprenez à reconnaître les signes du burn-out : irritabilité, absentéisme, perte de motivation.","Respectez les temps de repos légaux et évitez les plannings anarchiques de dernière minute.","Créez des espaces de parole réguliers où les employés peuvent s'exprimer sans jugement.","Célébrez les réussites collectives et reconnaissez les efforts individuels.","Formez vos chefs d'équipe à la détection du mal-être.","Mettez en place des petits rituels d'équipe : café collectif, repas partagé, moments de légèreté.","Montrez l'exemple : un manager qui se surcharge et ne se repose pas envoie le mauvais signal."]
   },
   {
     tag:'Module 08 — Digital', title:"Innovation & Digital Hôtelier",
     img:'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80',
-    simple:"En clair : le digital c'est tous les outils technologiques qui peuvent vous aider à mieux gérer votre hôtel. Appli de réservation, logiciel de gestion, réseaux sociaux, avis en ligne — tout ça fait partie du digital. Vous n'avez pas besoin d'être un expert informatique, juste de comprendre comment ces outils vous aident à mieux travailler.",
+    simple:"En clair : le digital c'est tous les outils technologiques qui peuvent vous aider à mieux gérer votre hôtel. Appli de réservation, logiciel de gestion, réseaux sociaux, avis en ligne — tout ça fait partie du digital. Pas besoin d'être un expert, juste de comprendre comment ces outils vous aident à mieux travailler.",
     intro:"Le digital transforme l'hôtellerie à vitesse accélérée. Les managers qui maîtrisent les outils technologiques gagnent en efficacité, en visibilité et en satisfaction client.",
     pts:["Maîtrisez votre PMS (logiciel de gestion hôtelière) — c'est le cerveau de votre hôtel.","Suivez et répondez à vos avis en ligne sur toutes les plateformes : Google, Booking, TripAdvisor.","Utilisez les réseaux sociaux pour montrer la culture de votre hôtel et attirer des talents.","Mettez en place des outils de communication interne simples entre départements.","Analysez vos données de réservation pour anticiper les tendances et ajuster vos tarifs.","Explorez les technologies de personnalisation client : check-in digital, clés mobiles, concierge virtuel.","Formez votre équipe aux nouveaux outils progressivement, avec patience et bienveillance."]
   }
@@ -1365,35 +1327,33 @@ const QUIZZES = [
         expl:"Les meilleurs managers hôteliers : intelligence émotionnelle élevée, vision stratégique, passion du service, capacité à développer les talents, résilience et humilité. La rentabilité suit naturellement."
       }
     ]
-  }
-];
-
-  // ── QUIZ GESTION DE CRISE ───────────────────────────────────────────────
+  },
+  // ── GESTION DE CRISE ────────────────────────────────────────────────────
   {
     title:"Quiz — Gestion de Crise", shortTitle:"Gestion de Crise",
     icon:"🚨", desc:"Saurez-vous garder la tête froide quand tout part de travers ? Urgences, pannes, absences imprévues.",
     level:"moyen", levelFr:"Moyen",
-    max: 10,
+    max:10,
     qs:[
       {
         q:"Un employé ne se présente pas le matin du rush du petit-déjeuner (80 clients prévus). Que faites-vous en premier ?",
         opts:[
-          {t:"Vous annulez le service petit-déjeuner pour les clients.",pts:0,fb:"Inacceptable — les clients ont payé pour ce service."},
+          {t:"Vous annulez le service petit-déjeuner.",pts:0,fb:"Inacceptable — les clients ont payé pour ce service."},
           {t:"Vous réorganisez les postes, essayez de joindre l'absent et appelez un remplaçant si besoin.",pts:2,fb:"Parfait ! Gérer calmement sans paniquer, c'est ça le management de crise."},
-          {t:"Vous faites vous-même le travail de l'absent.",pts:1,fb:"Bien pour dépanner, mais vous devez aussi gérer l'équipe — pas juste compenser."},
-          {t:"Vous attendez 30 minutes avant de décider quoi faire.",pts:0,fb:"Trop tard — le service a déjà commencé à souffrir."}
+          {t:"Vous faites vous-même le travail de l'absent.",pts:1,fb:"Bien pour dépanner, mais vous devez aussi gérer l'équipe."},
+          {t:"Vous attendez 30 minutes avant de décider.",pts:0,fb:"Trop tard — le service souffre déjà."}
         ], best:1,
-        expl:"En cas d'absence imprévue : 1) Tenter de joindre l'absent 2) Réorganiser les tâches 3) Appeler un collègue volontaire 4) Informer le client d'un léger délai si nécessaire 5) Documenter pour éviter que ça se reproduise."
+        expl:"En cas d'absence imprévue : 1) Tenter de joindre l'absent 2) Réorganiser les tâches 3) Appeler un collègue volontaire 4) Informer le client d'un léger délai si nécessaire 5) Documenter l'incident."
       },
       {
         q:"L'internet de l'hôtel tombe en panne pendant une conférence d'entreprise importante. Que faites-vous ?",
         opts:[
           {t:"Vous vous excusez et dites qu'il n'y a rien à faire.",pts:0,fb:"Un manager ne dit jamais 'il n'y a rien à faire'."},
-          {t:"Vous contactez le prestataire technique, proposez une connexion mobile de secours et tenez les clients informés.",pts:2,fb:"Excellent ! Agir vite + communication honnête = confiance maintenue."},
+          {t:"Vous contactez le prestataire, proposez une connexion de secours et tenez les clients informés.",pts:2,fb:"Excellent ! Agir vite + communication honnête = confiance maintenue."},
           {t:"Vous attendez que ça revienne sans rien dire aux clients.",pts:0,fb:"Ne pas informer les clients aggrave la frustration."},
-          {t:"Vous remboursez immédiatement tout le groupe sans autre action.",pts:0,fb:"Prématuré — d'abord agir pour résoudre, ensuite compenser si nécessaire."}
+          {t:"Vous remboursez immédiatement tout le groupe.",pts:0,fb:"Prématuré — d'abord agir pour résoudre, ensuite compenser si nécessaire."}
         ], best:1,
-        expl:"Face à une panne technique : 1) Alerter le prestataire 2) Activer une solution de secours (partage de connexion mobile) 3) Informer les clients honnêtement avec un délai estimé 4) Proposer une compensation si l'impact est important."
+        expl:"Face à une panne : 1) Alerter le prestataire 2) Activer une solution de secours 3) Informer les clients honnêtement 4) Proposer une compensation si l'impact est important."
       },
       {
         q:"Un client fait un malaise dans le restaurant de l'hôtel. Quelle est votre toute première action ?",
@@ -1401,147 +1361,147 @@ const QUIZZES = [
           {t:"Vous appelez d'abord la direction pour avoir l'autorisation d'agir.",pts:0,fb:"En urgence médicale, chaque seconde compte — pas besoin d'autorisation."},
           {t:"Vous appelez les secours (15 ou 112), sécurisez l'espace et restez avec le client.",pts:2,fb:"Parfait ! La vie du client passe avant tout le reste."},
           {t:"Vous demandez s'il y a un médecin dans la salle.",pts:1,fb:"Bien, mais après avoir appelé les secours — pas à la place."},
-          {t:"Vous attendez que le client reprenne ses esprits.",pts:0,fb:"Attendre face à un malaise peut coûter une vie."}
+          {t:"Vous attendez que le client reprenne ses esprits seul.",pts:0,fb:"Attendre face à un malaise peut coûter une vie."}
         ], best:1,
-        expl:"Urgence médicale : 1) Appeler le 15 (SAMU) ou 112 2) Mettre en position de sécurité 3) Écarter les curieux 4) Envoyer quelqu'un accueillir les secours à l'entrée 5) Prévenir la direction. La formation aux gestes de premiers secours est fortement recommandée."
+        expl:"Urgence médicale : 1) Appeler le 15 ou 112 2) Mettre en position de sécurité 3) Écarter les curieux 4) Envoyer quelqu'un accueillir les secours à l'entrée 5) Prévenir la direction."
       },
       {
         q:"Une fuite d'eau importante inonde le couloir du 2ème étage à 22h. Que faites-vous en premier ?",
         opts:[
-          {t:"Vous attendez le matin pour appeler un plombier.",pts:0,fb:"Les dégâts vont s'aggraver toute la nuit et toucher les chambres du dessous."},
-          {t:"Vous coupez l'eau, appelez la maintenance d'urgence, prévenez les clients concernés et proposez un changement de chambre.",pts:2,fb:"Parfait ! Couper, alerter, protéger les clients — dans cet ordre."},
-          {t:"Vous posez des serviettes dans le couloir et attendez.",pts:0,fb:"Solution insuffisante qui ne règle pas le problème."},
+          {t:"Vous attendez le matin pour appeler un plombier.",pts:0,fb:"Les dégâts vont s'aggraver toute la nuit."},
+          {t:"Vous coupez l'eau, appelez la maintenance d'urgence, prévenez les clients et proposez un changement de chambre.",pts:2,fb:"Parfait ! Couper, alerter, protéger les clients — dans cet ordre."},
+          {t:"Vous posez des serviettes et attendez.",pts:0,fb:"Solution insuffisante qui ne règle pas le problème."},
           {t:"Vous appelez le propriétaire pour qu'il prenne la décision.",pts:1,fb:"L'informer est bien, mais vous devez agir immédiatement sans attendre."}
         ], best:1,
-        expl:"Fuite d'eau : 1) Couper l'alimentation en eau de l'étage 2) Appeler la maintenance d'urgence 3) Prévenir les clients des chambres affectées 4) Proposer des chambres de remplacement 5) Documenter et photographier pour l'assurance."
+        expl:"Fuite d'eau : 1) Couper l'alimentation en eau de l'étage 2) Appeler la maintenance d'urgence 3) Prévenir les clients concernés 4) Proposer des chambres de remplacement 5) Documenter pour l'assurance."
       },
       {
         q:"Une alarme incendie se déclenche à 3h du matin. Vous pensez que c'est probablement une fausse alarme. Que faites-vous ?",
         opts:[
-          {t:"Vous éteignez l'alarme sans vérifier pour ne pas déranger les clients.",pts:0,fb:"Extrêmement dangereux et illégal. Une fausse alarme ignorée peut coûter des vies."},
+          {t:"Vous éteignez l'alarme sans vérifier pour ne pas déranger les clients.",pts:0,fb:"Extrêmement dangereux et illégal."},
           {t:"Vous traitez ça comme une vraie urgence : évacuation calme, vérification, retour sécurisé.",pts:2,fb:"Parfait ! On traite TOUJOURS une alarme incendie au sérieux."},
           {t:"Vous attendez l'arrivée des pompiers avant d'évacuer.",pts:0,fb:"Trop tardif — l'évacuation doit commencer immédiatement."},
-          {t:"Vous annoncez au micro que c'est sûrement une fausse alarme.",pts:0,fb:"Ne jamais minimiser une alarme incendie — même si vous le pensez."}
+          {t:"Vous annoncez au micro que c'est sûrement une fausse alarme.",pts:0,fb:"Ne jamais minimiser une alarme incendie."}
         ], best:1,
-        expl:"Alarme incendie = procédure complète OBLIGATOIRE : 1) Déclencher l'évacuation 2) Appeler les pompiers (18) 3) Guider calmement les clients vers les sorties 4) Ne jamais utiliser les ascenseurs 5) Pointer aux rassemblements 6) Laisser les pompiers autoriser le retour."
+        expl:"Alarme incendie = procédure complète : 1) Déclencher l'évacuation 2) Appeler les pompiers (18) 3) Guider calmement les clients 4) Ne jamais utiliser les ascenseurs 5) Attendre l'autorisation des pompiers pour rentrer."
       }
     ]
   },
-  // ── QUIZ RECRUTEMENT & RH ────────────────────────────────────────────────
+  // ── RECRUTEMENT & RH ────────────────────────────────────────────────────
   {
     title:"Quiz — Recrutement & RH", shortTitle:"Recrutement & RH",
     icon:"🤝", desc:"Savez-vous recruter les bonnes personnes, les motiver et gérer les situations RH du quotidien ?",
     level:"moyen", levelFr:"Moyen",
-    max: 10,
+    max:10,
     qs:[
       {
         q:"Vous recevez 40 CV pour un poste de réceptionniste. Comment sélectionnez-vous les candidats à appeler ?",
         opts:[
-          {t:"Vous appelez les 5 premiers arrivés — premier arrivé, premier servi.",pts:0,fb:"Sans critères de sélection, vous risquez de passer à côté des meilleurs profils."},
+          {t:"Vous appelez les 5 premiers arrivés.",pts:0,fb:"Sans critères de sélection, vous risquez de passer à côté des meilleurs profils."},
           {t:"Vous définissez 3-4 critères clés à l'avance et filtrez tous les CV selon ces critères.",pts:2,fb:"Parfait ! Des critères clairs = une sélection objective et efficace."},
           {t:"Vous confiez la sélection à un collègue disponible.",pts:0,fb:"Sans critères définis et partagés, la sélection sera incohérente."},
           {t:"Vous embauchez le premier candidat disponible pour aller vite.",pts:0,fb:"La précipitation dans le recrutement coûte très cher en turnover."}
         ], best:1,
-        expl:"Bons critères de sélection réceptionniste : maîtrise du français (et anglais si besoin), expérience du contact client, disponibilité horaire, attitude positive dans la lettre. L'attitude se voit souvent dans la façon dont le CV et la lettre sont rédigés."
+        expl:"Bons critères pour un réceptionniste : contact client, disponibilité horaire, maîtrise des langues, attitude positive. L'attitude se voit souvent dans la façon dont le CV et la lettre sont rédigés."
       },
       {
-        q:"Un candidat a très peu d'expérience mais montre une motivation et une attitude exceptionnelles en entretien. Que faites-vous ?",
+        q:"Un candidat a peu d'expérience mais montre une motivation et une attitude exceptionnelles. Que faites-vous ?",
         opts:[
-          {t:"Vous le refusez car l'expérience est indispensable dans l'hôtellerie.",pts:0,fb:"L'attitude et la motivation se forment rarement — les compétences techniques, oui."},
+          {t:"Vous le refusez car l'expérience est indispensable.",pts:0,fb:"L'attitude et la motivation se forment rarement — les compétences techniques, oui."},
           {t:"Vous lui donnez sa chance avec une intégration accompagnée et des objectifs progressifs.",pts:2,fb:"Excellent ! Une bonne attitude + une bonne formation = un excellent employé."},
-          {t:"Vous l'embauchez sans plan d'accompagnement particulier.",pts:1,fb:"Bien de lui donner sa chance, mais sans accompagnement il risque d'échouer."},
-          {t:"Vous lui proposez d'abord un stage non rémunéré pour tester.",pts:0,fb:"Illégal dans la plupart des cas et peu éthique."}
+          {t:"Vous l'embauchez sans plan d'accompagnement.",pts:1,fb:"Bien de lui donner sa chance, mais sans accompagnement il risque d'échouer."},
+          {t:"Vous lui proposez un stage non rémunéré pour tester.",pts:0,fb:"Illégal dans la plupart des cas."}
         ], best:1,
-        expl:"En hôtellerie, l'attitude compte souvent plus que l'expérience. Un employé souriant, ponctuel et motivé avec 0 expérience peut devenir excellent en 3 mois. Un employé expérimenté mais désagréable nuira toujours à votre service."
+        expl:"En hôtellerie, l'attitude compte souvent plus que l'expérience. Un employé souriant et motivé sans expérience peut devenir excellent en 3 mois. Un employé expérimenté mais désagréable nuira toujours."
       },
       {
-        q:"Votre meilleur réceptionniste vous annonce sa démission pour aller chez un concurrent. Que faites-vous en premier ?",
+        q:"Votre meilleur réceptionniste annonce sa démission pour aller chez un concurrent. Que faites-vous en premier ?",
         opts:[
-          {t:"Vous acceptez sans rien dire et cherchez immédiatement un remplaçant.",pts:0,fb:"Occasion manquée de comprendre les raisons et potentiellement de le retenir."},
+          {t:"Vous acceptez sans rien dire.",pts:0,fb:"Occasion manquée de comprendre les raisons."},
           {t:"Vous organisez un entretien de départ pour comprendre les vraies raisons.",pts:2,fb:"Parfait ! Ces informations sont précieuses pour éviter de perdre d'autres employés."},
-          {t:"Vous lui proposez une augmentation immédiate sans chercher à comprendre.",pts:1,fb:"L'argent n'est souvent pas la vraie raison — sans comprendre, vous risquez de rater le vrai problème."},
-          {t:"Vous le mettez à l'écart jusqu'à son départ pour protéger l'équipe.",pts:0,fb:"Destructif pour l'ambiance et le service client jusqu'à son dernier jour."}
+          {t:"Vous lui proposez une augmentation immédiate sans chercher à comprendre.",pts:1,fb:"L'argent n'est souvent pas la vraie raison — vous risquez de rater le vrai problème."},
+          {t:"Vous le mettez à l'écart jusqu'à son dernier jour.",pts:0,fb:"Destructif pour l'ambiance et la qualité de service."}
         ], best:1,
-        expl:"L'entretien de départ est une mine d'informations : management, ambiance, salaire, perspectives... Les employés qui partent disent souvent la vérité. Ces retours permettent de corriger ce qui fait fuir les talents."
+        expl:"L'entretien de départ est une mine d'or : management, ambiance, salaire, perspectives... Les employés qui partent disent souvent la vérité. Ces retours permettent de corriger ce qui fait fuir les talents."
       },
       {
-        q:"Un employé que vous appréciez vous demande une augmentation. Son travail est bon mais le budget est serré. Que faites-vous ?",
+        q:"Un bon employé vous demande une augmentation mais le budget est serré. Que faites-vous ?",
         opts:[
-          {t:"Vous refusez sèchement car le budget ne le permet pas.",pts:0,fb:"Un refus sans explication ni alternative démotive immédiatement."},
+          {t:"Vous refusez sèchement car le budget ne le permet pas.",pts:0,fb:"Un refus sans explication démotive immédiatement."},
           {t:"Vous reconnaissez son travail, expliquez honnêtement la situation et proposez un plan concret pour plus tard.",pts:2,fb:"Parfait ! Honnêteté + reconnaissance + perspective = motivation maintenue."},
           {t:"Vous lui dites de revenir dans 6 mois sans rien préciser.",pts:1,fb:"Acceptable mais flou — il ne sait pas sur quoi compter."},
-          {t:"Vous lui promettez une augmentation sans être certain de pouvoir la tenir.",pts:0,fb:"Une promesse non tenue détruit définitivement la confiance."}
+          {t:"Vous lui promettez une augmentation sans certitude de pouvoir la tenir.",pts:0,fb:"Une promesse non tenue détruit la confiance."}
         ], best:1,
-        expl:"Face à une demande d'augmentation impossible à satisfaire maintenant : 1) Remercier pour le travail fourni 2) Expliquer honnêtement la contrainte budgétaire 3) Proposer un rendez-vous dans X mois avec des critères clairs 4) Explorer d'autres formes de reconnaissance (formation, responsabilités)."
+        expl:"Face à une demande impossible maintenant : 1) Remercier pour le travail 2) Expliquer honnêtement la contrainte 3) Proposer un rendez-vous avec des critères clairs 4) Explorer d'autres formes de reconnaissance."
       },
       {
-        q:"Malgré 3 discussions en privé, un employé continue d'arriver en retard régulièrement. Quelle est l'étape suivante ?",
+        q:"Malgré 3 discussions en privé, un employé continue d'arriver en retard. Quelle est l'étape suivante ?",
         opts:[
-          {t:"Vous ignorez le problème — il est trop compétent pour être sanctionné.",pts:0,fb:"L'inaction envoie un signal dangereux à toute l'équipe : les règles ne s'appliquent pas à tous."},
-          {t:"Vous rédigez un avertissement écrit formel avec un plan de progrès clair.",pts:2,fb:"Parfait ! La procédure formelle est nécessaire après plusieurs tentatives informelles."},
-          {t:"Vous le licenciez immédiatement.",pts:0,fb:"Trop radical — la procédure disciplinaire doit être respectée par étapes."},
-          {t:"Vous demandez à ses collègues de lui rappeler les règles.",pts:0,fb:"Ce n'est pas le rôle des collègues — c'est le vôtre en tant que manager."}
+          {t:"Vous ignorez le problème — il est trop compétent pour être sanctionné.",pts:0,fb:"L'inaction envoie un signal dangereux à toute l'équipe."},
+          {t:"Vous rédigez un avertissement écrit formel avec un plan de progrès.",pts:2,fb:"Parfait ! La procédure formelle est nécessaire après plusieurs tentatives informelles."},
+          {t:"Vous le licenciez immédiatement.",pts:0,fb:"Trop radical — la procédure doit être respectée par étapes."},
+          {t:"Vous demandez à ses collègues de lui rappeler les règles.",pts:0,fb:"Ce n'est pas le rôle des collègues."}
         ], best:1,
-        expl:"Procédure disciplinaire : 1) Discussion informelle (déjà fait) 2) Avertissement oral 3) Avertissement écrit avec plan de progrès 4) Mise à pied si ça continue 5) Licenciement en dernier recours. Documenter chaque étape est indispensable."
+        expl:"Procédure disciplinaire : 1) Discussions informelles (déjà fait) 2) Avertissement écrit avec plan de progrès 3) Mise à pied si ça continue 4) Licenciement en dernier recours. Documenter chaque étape."
       }
     ]
   },
-  // ── QUIZ COMMUNICATION AVANCÉE ───────────────────────────────────────────
+  // ── COMMUNICATION AVANCÉE ────────────────────────────────────────────────
   {
     title:"Quiz — Communication Avancée", shortTitle:"Communication Avancée",
-    icon:"💬", desc:"Savoir communiquer dans les situations complexes — tensions, mauvaises nouvelles, désaccords.",
+    icon:"💬", desc:"Savoir communiquer dans les situations complexes — tensions en réunion, mauvaises nouvelles, désaccords.",
     level:"dur", levelFr:"Difficile",
-    max: 10,
+    max:10,
     qs:[
       {
         q:"Lors d'une réunion d'équipe, deux employés s'interrompent constamment et créent une tension visible. Comment gérez-vous ?",
         opts:[
-          {t:"Vous ignorez la tension et continuez la réunion normalement.",pts:0,fb:"Ignorer une tension en réunion la laisse s'installer et nuit à la productivité de tous."},
-          {t:"Vous intervenez calmement, posez une règle de parole claire et recentrez la discussion.",pts:2,fb:"Parfait ! Poser un cadre clair sans humilier personne, c'est du vrai leadership."},
-          {t:"Vous stoppez la réunion et remettez les deux à l'ordre devant tous.",pts:1,fb:"Recadrer est bien, mais humilier en public nuit à la confiance."},
-          {t:"Vous terminez la réunion rapidement pour éviter l'escalade.",pts:0,fb:"Fuir la tension ne la résout pas — elle reviendra à la prochaine réunion."}
+          {t:"Vous ignorez la tension et continuez.",pts:0,fb:"Ignorer une tension la laisse s'installer et nuit à la productivité."},
+          {t:"Vous intervenez calmement, posez une règle de parole claire et recentrez la discussion.",pts:2,fb:"Parfait ! Poser un cadre sans humilier personne, c'est du vrai leadership."},
+          {t:"Vous remettez les deux à l'ordre devant tout le monde.",pts:1,fb:"Recadrer est bien, mais humilier en public nuit à la confiance."},
+          {t:"Vous terminez la réunion rapidement pour éviter l'escalade.",pts:0,fb:"Fuir la tension ne la résout pas."}
         ], best:1,
-        expl:"En réunion : 'Je vais poser une règle simple — on lève la main pour parler et on ne coupe pas la parole. Chacun aura son temps.' Dit calmement, sans viser personne directement, ça remet tout le monde sur les rails sans créer de rancœur."
+        expl:"En réunion : poser une règle simple et calme — 'On lève la main pour parler, on ne coupe pas la parole.' Dit sans viser personne, ça remet tout le monde sur les rails sans créer de rancœur."
       },
       {
-        q:"Vous devez annoncer à votre équipe la suppression des primes de fin d'année pour raisons économiques. Comment communiquez-vous ?",
+        q:"Vous devez annoncer la suppression des primes de fin d'année pour raisons économiques. Comment communiquez-vous ?",
         opts:[
-          {t:"Vous envoyez un email collectif pour informer tout le monde en même temps.",pts:0,fb:"Une mauvaise nouvelle aussi importante mérite une annonce en face-à-face."},
-          {t:"Vous réunissez l'équipe, expliquez honnêtement le contexte, validez les émotions et ouvrez la discussion.",pts:2,fb:"Excellent ! Transparence + respect des émotions + espace de dialogue = confiance maintenue malgré la mauvaise nouvelle."},
-          {t:"Vous attendez le dernier moment pour annoncer afin d'éviter les tensions.",pts:0,fb:"Attendre ne fait qu'augmenter l'impact négatif quand ça sort — et les rumeurs circulent toujours avant."},
-          {t:"Vous minimisez l'impact en disant que c'est juste temporaire.",pts:0,fb:"Minimiser une mauvaise nouvelle crée de la méfiance quand la réalité s'impose."}
+          {t:"Vous envoyez un email collectif.",pts:0,fb:"Une mauvaise nouvelle aussi importante mérite une annonce en face-à-face."},
+          {t:"Vous réunissez l'équipe, expliquez honnêtement le contexte, validez les émotions et ouvrez la discussion.",pts:2,fb:"Excellent ! Transparence + respect des émotions + dialogue = confiance maintenue."},
+          {t:"Vous attendez le dernier moment pour éviter les tensions.",pts:0,fb:"Attendre ne fait qu'augmenter l'impact négatif — et les rumeurs circulent toujours avant."},
+          {t:"Vous minimisez en disant que c'est juste temporaire.",pts:0,fb:"Minimiser crée de la méfiance quand la réalité s'impose."}
         ], best:1,
-        expl:"Annoncer une mauvaise nouvelle : 1) Choisir le bon moment (pas vendredi soir) 2) Réunion en présentiel 3) Expliquer le contexte réel 4) Valider les émotions ('Je comprends que c'est difficile') 5) Laisser parler 6) Donner les prochaines étapes. L'honnêteté difficile vaut mieux que le silence ou le mensonge."
+        expl:"Annoncer une mauvaise nouvelle : 1) Choisir le bon moment (pas vendredi soir) 2) Réunion en présentiel 3) Expliquer le contexte réel 4) Valider les émotions 5) Laisser parler 6) Donner les prochaines étapes."
       },
       {
-        q:"La direction vous demande d'appliquer une nouvelle règle que vous trouvez injuste envers votre équipe. Comment gérez-vous ?",
+        q:"La direction vous demande d'appliquer une règle que vous trouvez injuste envers votre équipe. Comment gérez-vous ?",
         opts:[
-          {t:"Vous critiquez ouvertement la règle devant votre équipe pour montrer que vous êtes de leur côté.",pts:0,fb:"Critiquer la direction devant votre équipe mine votre crédibilité et la cohésion."},
-          {t:"Vous exprimez votre désaccord en privé à la direction, puis appliquez la règle en l'expliquant à votre équipe.",pts:2,fb:"Parfait ! Défendre son équipe en privé + respecter la hiérarchie en public = du vrai professionnalisme."},
-          {t:"Vous appliquez la règle sans rien dire, ni à la direction ni à l'équipe.",pts:1,fb:"Appliquer c'est bien, mais ne pas exprimer son désaccord à la direction prive l'organisation d'un retour précieux."},
-          {t:"Vous refusez d'appliquer la règle jusqu'à ce qu'elle soit modifiée.",pts:0,fb:"Refuser d'appliquer une règle de la direction sans en discuter crée un conflit sérieux."}
+          {t:"Vous critiquez ouvertement la règle devant votre équipe.",pts:0,fb:"Critiquer la direction devant l'équipe mine votre crédibilité et la cohésion."},
+          {t:"Vous exprimez votre désaccord en privé à la direction, puis appliquez en expliquant à l'équipe.",pts:2,fb:"Parfait ! Défendre son équipe en privé + respecter la hiérarchie en public = professionnalisme."},
+          {t:"Vous appliquez sans rien dire à personne.",pts:1,fb:"Appliquer c'est bien, mais ne pas remonter son désaccord prive l'organisation d'un retour précieux."},
+          {t:"Vous refusez d'appliquer jusqu'à modification.",pts:0,fb:"Refuser d'appliquer une décision de la direction crée un conflit sérieux."}
         ], best:1,
-        expl:"Le rôle du manager = courroie de transmission dans les deux sens. Vers le haut : remonter les préoccupations de l'équipe avec respect. Vers le bas : expliquer les décisions avec honnêteté. 'Je ne suis pas d'accord avec cette règle mais voilà pourquoi elle a été prise.'"
+        expl:"Le manager = courroie de transmission dans les deux sens. Vers le haut : remonter les préoccupations. Vers le bas : expliquer les décisions honnêtement. 'Je ne suis pas d'accord mais voilà pourquoi cette règle existe.'"
       },
       {
-        q:"Vous réalisez que votre équipe ne vous remonte jamais les problèmes — vous les apprenez toujours par d'autres. Comment changez-vous ça ?",
+        q:"Votre équipe ne vous remonte jamais les problèmes — vous les apprenez toujours par d'autres. Comment changez-vous ça ?",
         opts:[
-          {t:"Vous punissez le prochain qui ne vous informe pas directement.",pts:0,fb:"La peur ne crée pas la confiance — elle crée juste plus de silence et de secrets."},
-          {t:"Vous créez un espace de parole sécurisé : réunions régulières, politique de 'pas de mauvaise surprise punie'.",pts:2,fb:"Excellent ! La confiance se construit, elle ne se décrète pas."},
-          {t:"Vous dites à l'équipe que votre porte est toujours ouverte.",pts:1,fb:"Bien mais insuffisant — dire 'ma porte est ouverte' ne change pas le comportement si la confiance n'est pas là."},
-          {t:"Vous installez une boîte à suggestions anonyme.",pts:1,fb:"Utile en complément, mais l'anonymat ne remplace pas une vraie culture de confiance."}
+          {t:"Vous punissez le prochain qui ne vous informe pas directement.",pts:0,fb:"La peur ne crée pas la confiance — elle crée plus de silence."},
+          {t:"Vous créez un espace de parole sécurisé et adoptez une politique 'zéro punition pour les mauvaises nouvelles remontées tôt'.",pts:2,fb:"Excellent ! La confiance se construit, elle ne se décrète pas."},
+          {t:"Vous dites que votre porte est toujours ouverte.",pts:1,fb:"Bien mais insuffisant — dire 'ma porte est ouverte' ne change pas le comportement."},
+          {t:"Vous installez une boîte à suggestions anonyme.",pts:1,fb:"Utile en complément, mais ça ne remplace pas une vraie culture de confiance."}
         ], best:1,
-        expl:"Pour que l'équipe remonte les problèmes : 1) Ne jamais 'tirer sur le messager' 2) Remercier ceux qui signalent les problèmes tôt 3) Créer des réunions régulières de 15min 1:1 4) Partager vos propres doutes et erreurs — ça humanise et donne la permission d'être imparfait."
+        expl:"Pour que l'équipe remonte les problèmes : 1) Ne jamais punir le messager 2) Remercier ceux qui signalent tôt 3) Créer des réunions 1:1 régulières 4) Partager vos propres doutes — ça humanise et donne la permission d'être imparfait."
       },
       {
         q:"Un client vous envoie un email très agressif avec des accusations fausses sur votre équipe. Comment répondez-vous ?",
         opts:[
-          {t:"Vous répondez sur le même ton pour défendre votre équipe.",pts:0,fb:"Une réponse agressive en email peut devenir publique et nuire gravement à votre réputation."},
+          {t:"Vous répondez sur le même ton pour défendre votre équipe.",pts:0,fb:"Une réponse agressive peut devenir publique et nuire à votre réputation."},
           {t:"Vous ignorez l'email — ce client est de mauvaise foi.",pts:0,fb:"Ne pas répondre est perçu comme un aveu ou un manque de professionnalisme."},
-          {t:"Vous répondez calmement, reconnaissez son ressenti, rectifiez les faits avec diplomatie et proposez d'en parler.",pts:2,fb:"Parfait ! Calme + empathie + faits + invitation au dialogue = réponse professionnelle."},
-          {t:"Vous transmettez l'email à la direction sans répondre.",pts:0,fb:"Déléguer sans répondre laisse le client sans réponse — et aggrave sa frustration."}
+          {t:"Vous répondez calmement, reconnaissez son ressenti, rectifiez les faits avec diplomatie et proposez d'en parler.",pts:2,fb:"Parfait ! Calme + empathie + faits + dialogue = réponse professionnelle."},
+          {t:"Vous transmettez l'email à la direction sans répondre.",pts:0,fb:"Déléguer sans répondre laisse le client sans réponse et aggrave sa frustration."}
         ], best:2,
-        expl:"Réponse à un email agressif : 1) Attendre quelques heures avant de répondre (ne jamais écrire à chaud) 2) Remercier de nous avoir contactés 3) Valider le ressenti sans forcément valider les accusations 4) Présenter les faits calmement 5) Proposer un appel ou une rencontre. Toujours rester professionnel — l'email peut être partagé."
+        expl:"Répondre à un email agressif : 1) Attendre quelques heures (ne jamais écrire à chaud) 2) Remercier d'avoir contacté 3) Valider le ressenti sans valider les accusations 4) Présenter les faits calmement 5) Proposer un appel. L'email peut être partagé — toujours rester professionnel."
       }
     ]
   }
