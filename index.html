@@ -761,25 +761,48 @@ document.addEventListener('click', e => {
 });
 
 // ═══════════════════════════ DICTIONNAIRE SEARCH ══════════════════════════
-function searchDict() {
-  const input = document.getElementById('dictInput').value.trim().toLowerCase();
+async function searchDict() {
+  const raw   = document.getElementById('dictInput').value.trim();
+  const input = raw.toLowerCase();
   const result = document.getElementById('dictResult');
   if (!input) return;
 
-  // Cherche correspondance exacte d'abord, puis partielle
-  const exactKey = Object.keys(GLOSSARY).find(k => k.toLowerCase() === input);
+  result.style.display = 'block';
+
+  // 1) Cherche dans le glossaire hôtelier d'abord
+  const exactKey   = Object.keys(GLOSSARY).find(k => k.toLowerCase() === input);
   const partialKey = !exactKey && Object.keys(GLOSSARY).find(k =>
     k.toLowerCase().includes(input) || input.includes(k.toLowerCase())
   );
   const key = exactKey || partialKey;
 
-  result.style.display = 'block';
   if (key) {
     result.className = 'dict-result found';
-    result.innerHTML = `<span class="dict-result-word">${key} :</span>${GLOSSARY[key]}`;
-  } else {
+    result.innerHTML = `<span style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;">🏨 Définition hôtelière</span><span class="dict-result-word">${key} :</span> ${GLOSSARY[key]}`;
+    return;
+  }
+
+  // 2) Pas dans le glossaire → cherche sur Wiktionnaire
+  result.className = 'dict-result found';
+  result.innerHTML = `<span style="color:var(--muted);font-size:.85rem;">⏳ Recherche de "<strong style="color:#fff">${raw}</strong>"...</span>`;
+
+  try {
+    const word = encodeURIComponent(raw);
+    const res  = await fetch(`https://fr.wiktionary.org/api/rest_v1/page/summary/${word}`);
+    if (!res.ok) throw new Error();
+    const data = await res.json();
+    const extract = data.extract || '';
+    if (!extract) throw new Error();
+
+    // Prend la première phrase, max 280 caractères
+    let def = extract.split(/[.!?]/)[0].trim() + '.';
+    if (def.length > 280) def = def.slice(0, 280) + '...';
+
+    result.className = 'dict-result found';
+    result.innerHTML = `<span style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:.3rem;">🌐 Définition générale</span><span class="dict-result-word">${raw} :</span> ${def}`;
+  } catch(e) {
     result.className = 'dict-result notfound';
-    result.innerHTML = `❌ Le mot "<strong>${input}</strong>" n'est pas encore dans notre dictionnaire. Essaie un autre mot ou vérifie l'orthographe.`;
+    result.innerHTML = `❌ Mot "<strong>${raw}</strong>" introuvable. Vérifie l'orthographe et réessaie.`;
   }
 }
 
