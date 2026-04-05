@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bon Manager Hôtelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --dark: #0e0e0e;
+      --dark2: #161616;
+      --dark3: #1f1f1f;
+      --dark4: #2b2b2b;
+      --cream: #f5f0e8;
+      --text: #e2ddd4;
+      --muted: #7a7060;
+      --green: #4caf7d;
+      --red: #e05555;
+      --orange: #e09e55;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      background: rgba(14,14,14,0.94); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201,168,76,.12);
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--gold); text-decoration: none; letter-spacing: .5px;
+    }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 500;
+      text-transform: uppercase; letter-spacing: .5px; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-btn {
+      background: var(--gold); color: var(--dark) !important;
+      padding: .4rem 1.1rem; border-radius: 4px; font-weight: 700 !important;
+    }
+    .nav-btn:hover { background: var(--gold-light) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1800&q=80') center 30% / cover no-repeat;
+      animation: zoomBg 18s ease-in-out infinite alternate;
+    }
+    @keyframes zoomBg { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+    .hero-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(14,14,14,.7) 0%, rgba(14,14,14,.5) 50%, rgba(14,14,14,.85) 100%);
+    }
+    .hero-inner {
+      position: relative; z-index: 2; max-width: 700px; padding: 0 1.5rem;
+      animation: up .8s ease both;
+    }
+    @keyframes up { from { opacity:0; transform: translateY(30px); } to { opacity:1; transform: translateY(0); } }
+    .hero-tag {
+      display: inline-block; background: rgba(201,168,76,.14); border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold); font-size: .72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; padding: .35rem 1rem; border-radius: 99px; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.1;
+      color: #fff; margin-bottom: 1.1rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 2.2rem; }
+    .hero-btns { display: flex; gap: .9rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── BOUTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .75rem 1.8rem; border-radius: 6px; font-size: .9rem; font-weight: 600;
+      text-decoration: none; cursor: pointer; border: none; transition: all .22s; font-family: 'Inter', sans-serif;
+    }
+    .btn-gold { background: var(--gold); color: var(--dark); }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.3); }
+    .btn-ghost { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.3); }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ─── SECTION ─── */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .s-tag { display: block; font-size: .7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .s-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3.5vw, 2.6rem); color: #fff; line-height: 1.2; margin-bottom: .8rem; }
+    .s-sub { font-size: .95rem; color: var(--muted); line-height: 1.7; max-width: 520px; }
+
+    /* ─── STATS ─── */
+    .stats {
+      background: var(--dark2); border-top: 1px solid rgba(201,168,76,.1); border-bottom: 1px solid rgba(201,168,76,.1);
+      padding: 2.5rem 1.5rem;
+    }
+    .stats-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; text-align: center; }
+    .stat-n { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--gold); line-height: 1; }
+    .stat-l { font-size: .78rem; color: var(--muted); margin-top: .3rem; letter-spacing: .5px; }
+
+    /* ─── APPRENDRE ─── */
+    #apprendre { background: var(--dark); }
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px,1fr)); gap: 1.2rem; margin-top: 3rem; }
+    .mod-card {
+      background: var(--dark3); border: 1px solid rgba(201,168,76,.07); border-radius: 14px;
+      overflow: hidden; cursor: pointer; transition: transform .28s, border-color .28s, box-shadow .28s;
+    }
+    .mod-card:hover { transform: translateY(-5px); border-color: rgba(201,168,76,.28); box-shadow: 0 14px 36px rgba(0,0,0,.35); }
+    .mod-img { width: 100%; height: 185px; object-fit: cover; filter: brightness(.82); transition: filter .28s; }
+    .mod-card:hover .mod-img { filter: brightness(.96); }
+    .mod-body { padding: 1.5rem; }
+    .mod-tag { font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .5rem; display: block; }
+    .mod-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; margin-bottom: .55rem; line-height: 1.3; }
+    .mod-body p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+    .mod-footer { padding: .9rem 1.5rem; border-top: 1px solid rgba(255,255,255,.05); display: flex; align-items: center; justify-content: space-between; }
+    .mod-footer span { font-size: .8rem; color: var(--muted); }
+    .mod-arrow { color: var(--gold); font-size: 1.1rem; }
+
+    /* ─── OVERLAY MODULE ─── */
+    .overlay { position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; padding: 1rem; opacity: 0; pointer-events: none; transition: opacity .28s; }
+    .overlay.open { opacity: 1; pointer-events: all; }
+    .overlay-box {
+      background: var(--dark3); border: 1px solid rgba(201,168,76,.18); border-radius: 16px;
+      max-width: 680px; width: 100%; max-height: 88vh; overflow-y: auto;
+      transform: translateY(20px); transition: transform .32s;
+      scrollbar-width: thin; scrollbar-color: var(--dark4) var(--dark3);
+      position: relative;
+    }
+    .overlay.open .overlay-box { transform: translateY(0); }
+    .ov-img { width: 100%; height: 220px; object-fit: cover; border-radius: 16px 16px 0 0; }
+    .ov-body { padding: 1.8rem; }
+    .ov-body .ov-tag { font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .5rem; }
+    .ov-body h2 { font-family: 'Playfair Display', serif; font-size: 1.55rem; color: #fff; margin-bottom: 1rem; }
+    .ov-body p { font-size: .9rem; color: var(--muted); line-height: 1.8; margin-bottom: .9rem; }
+    .ov-body ul { list-style: none; }
+    .ov-body ul li { font-size: .88rem; color: var(--text); padding: .55rem 0; border-bottom: 1px solid rgba(255,255,255,.04); display: flex; gap: .7rem; line-height: 1.55; }
+    .ov-body ul li::before { content: '✦'; color: var(--gold); flex-shrink: 0; }
+    .ov-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,.5); border: none; color: #fff; width: 34px; height: 34px; border-radius: 50%; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .ov-close:hover { background: rgba(0,0,0,.7); }
+
+    /* ─── CONSEILS ─── */
+    #conseils { background: var(--dark2); }
+    .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1rem; margin-top: 3rem; }
+    .tip {
+      background: var(--dark3); border-left: 3px solid var(--gold); border-radius: 10px;
+      padding: 1.4rem 1.5rem; transition: transform .22s;
+    }
+    .tip:hover { transform: translateX(4px); }
+    .tip-icon { font-size: 1.7rem; margin-bottom: .7rem; }
+    .tip h4 { font-size: .95rem; color: #fff; margin-bottom: .4rem; font-weight: 600; }
+    .tip p { font-size: .83rem; color: var(--muted); line-height: 1.65; }
+
+    /* ─── QUIZ SECTION ─── */
+    #quiz { background: var(--dark); }
+    .quiz-header { text-align: center; margin-bottom: 3rem; }
+
+    /* Choix du quiz */
+    .quiz-choice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; }
+    .qcard {
+      background: var(--dark3); border: 1px solid rgba(201,168,76,.1); border-radius: 14px;
+      padding: 2rem 1.6rem; text-align: center; cursor: pointer;
+      transition: transform .25s, border-color .25s, box-shadow .25s;
+    }
+    .qcard:hover { transform: translateY(-5px); border-color: rgba(201,168,76,.35); box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+    .qcard-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+    .qcard h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; margin-bottom: .5rem; }
+    .qcard p { font-size: .82rem; color: var(--muted); line-height: 1.6; margin-bottom: 1.2rem; }
+    .qcard-info { display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; }
+    .qbadge { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2); color: var(--gold); font-size: .72rem; font-weight: 700; padding: .25rem .7rem; border-radius: 99px; }
+
+    /* ─── FILTRES DIFFICULTÉ ─── */
+    .diff-filters { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+    .diff-btn {
+      padding: .45rem 1.2rem; border-radius: 99px; font-size: .78rem; font-weight: 700;
+      letter-spacing: .5px; border: 1.5px solid transparent; cursor: pointer;
+      transition: all .2s; font-family: 'Inter', sans-serif; background: transparent;
+    }
+    .diff-btn[data-level="all"]    { border-color: var(--muted); color: var(--muted); }
+    .diff-btn[data-level="facile"] { border-color: var(--green);  color: var(--green); }
+    .diff-btn[data-level="moyen"]  { border-color: var(--gold);   color: var(--gold); }
+    .diff-btn[data-level="dur"]    { border-color: var(--red);    color: var(--red); }
+    .diff-btn.active, .diff-btn:hover { color: var(--dark) !important; }
+    .diff-btn[data-level="all"].active,    .diff-btn[data-level="all"]:hover    { background: var(--muted);  border-color: var(--muted); }
+    .diff-btn[data-level="facile"].active, .diff-btn[data-level="facile"]:hover { background: var(--green);  border-color: var(--green); }
+    .diff-btn[data-level="moyen"].active,  .diff-btn[data-level="moyen"]:hover  { background: var(--gold);   border-color: var(--gold); }
+    .diff-btn[data-level="dur"].active,    .diff-btn[data-level="dur"]:hover    { background: var(--red);    border-color: var(--red); }
+
+    /* ─── BADGE DIFFICULTÉ SUR CARTE ─── */
+    .diff-badge {
+      display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: .2rem .65rem; border-radius: 99px; margin-bottom: .6rem;
+    }
+    .diff-badge.facile { background: rgba(76,175,125,.15);  color: var(--green);  border: 1px solid rgba(76,175,125,.3); }
+    .diff-badge.moyen  { background: rgba(201,168,76,.13);  color: var(--gold);   border: 1px solid rgba(201,168,76,.28); }
+    .diff-badge.dur    { background: rgba(224,85,85,.12);   color: var(--red);    border: 1px solid rgba(224,85,85,.28); }
+
+    /* ─── GLOSSAIRE TOOLTIP ─── */
+    .gloss-term {
+      border-bottom: 1.5px dashed var(--gold); color: inherit; cursor: help;
+      transition: color .15s; display: inline;
+    }
+    .gloss-term:hover { color: var(--gold-light); }
+    .gloss-popup {
+      position: fixed; z-index: 2000; max-width: 300px; min-width: 200px;
+      background: var(--dark2); border: 1px solid rgba(201,168,76,.4);
+      border-radius: 10px; padding: 1rem 1.1rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,.6);
+      opacity: 0; pointer-events: none; transition: opacity .18s;
+    }
+    .gloss-popup.show { opacity: 1; pointer-events: all; }
+    .gloss-popup-word { font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .4rem; }
+    .gloss-popup-def  { font-size: .84rem; color: var(--text); line-height: 1.6; }
+    .gloss-popup-close { position: absolute; top: .5rem; right: .6rem; background: none; border: none; color: var(--muted); cursor: pointer; font-size: .85rem; padding: 0; line-height: 1; }
+    .gloss-popup-close:hover { color: #fff; }
+
+    /* Zone de quiz active */
+    #quizArea { display: none; max-width: 720px; margin: 0 auto; }
+
+    .quiz-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .quiz-top-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #fff; flex: 1; }
+    .quiz-score-badge { background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.25); color: var(--gold); font-size: .8rem; font-weight: 700; padding: .3rem .9rem; border-radius: 99px; white-space: nowrap; }
+
+    .progress-wrap { margin-bottom: 1.8rem; }
+    .progress-label { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); margin-bottom: .45rem; }
+    .progress-bar { height: 5px; background: var(--dark4); border-radius: 5px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transition: width .45s ease; border-radius: 5px; }
+
+    /* Question box */
+    .q-box {
+      background: var(--dark3); border: 1px solid rgba(255,255,255,.07); border-radius: 16px;
+      padding: 2rem; display: none;
+    }
+    .q-box.active { display: block; animation: up .35s ease both; }
+    .q-num { font-size: .7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: .7rem; }
+    .q-text { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; line-height: 1.45; margin-bottom: 1.6rem; }
+
+    .options { display: flex; flex-direction: column; gap: .65rem; }
+    .opt {
+      display: flex; align-items: flex-start; gap: .9rem;
+      padding: .9rem 1.1rem; background: var(--dark4); border: 1.5px solid rgba(255,255,255,.06);
+      border-radius: 10px; cursor: pointer; transition: border-color .18s, background .18s, transform .15s;
+      user-select: none;
+    }
+    .opt:hover:not(.locked) { border-color: rgba(201,168,76,.4); background: rgba(201,168,76,.05); transform: translateX(3px); }
+    .opt.selected { border-color: var(--gold); background: rgba(201,168,76,.09); }
+    .opt.correct { border-color: var(--green) !important; background: rgba(76,175,125,.1) !important; }
+    .opt.wrong   { border-color: var(--red)   !important; background: rgba(224,85,85,.08) !important; }
+    .opt.locked  { cursor: default; }
+
+    .opt-letter {
+      width: 27px; height: 27px; border-radius: 50%; background: rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; font-weight: 700; color: var(--muted); flex-shrink: 0; transition: background .18s, color .18s;
+    }
+    .opt.selected .opt-letter { background: var(--gold); color: var(--dark); }
+    .opt.correct  .opt-letter { background: var(--green); color: #fff; }
+    .opt.wrong    .opt-letter { background: var(--red); color: #fff; }
+
+    .opt-text { font-size: .88rem; color: var(--text); line-height: 1.5; padding-top: .1rem; }
+    .opt-fb { font-size: .8rem; margin-top: .35rem; display: none; }
+    .opt.correct .opt-fb { display: block; color: var(--green); }
+    .opt.wrong   .opt-fb { display: block; color: var(--red); }
+    .opt.selected.correct .opt-fb { display: block; color: var(--green); }
+
+    .expl-box {
+      display: none; margin-top: 1.3rem; padding: .9rem 1.1rem;
+      background: rgba(201,168,76,.06); border-left: 3px solid var(--gold);
+      border-radius: 6px; font-size: .86rem; color: var(--muted); line-height: 1.7;
+    }
+    .expl-box.show { display: block; animation: up .3s ease both; }
+
+    .warn-box {
+      display: none; margin-top: 1rem; padding: .65rem 1rem;
+      background: rgba(224,85,85,.1); border: 1px solid rgba(224,85,85,.3);
+      border-radius: 6px; font-size: .83rem; color: var(--red); text-align: center;
+    }
+    .warn-box.shake { display: block; animation: shake .4s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
+
+    .q-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1.6rem; }
+    .back-link { font-size: .83rem; color: var(--muted); cursor: pointer; text-decoration: underline; }
+    .back-link:hover { color: var(--gold); }
+
+    /* ─── SCORE ─── */
+    .score-screen {
+      display: none; max-width: 680px; margin: 0 auto; text-align: center;
+      background: var(--dark3); border: 1px solid rgba(201,168,76,.15); border-radius: 18px;
+      padding: 2.5rem 2rem; animation: up .45s ease both;
+    }
+    .score-screen.show { display: block; }
+
+    .score-ring { width: 150px; height: 150px; margin: 0 auto 1.5rem; position: relative; display: flex; align-items: center; justify-content: center; }
+    .score-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .score-ring svg circle { fill: none; stroke-width: 7; stroke-linecap: round; }
+    .ring-bg { stroke: var(--dark4); }
+    .ring-fill { stroke: var(--gold); stroke-dasharray: 408; stroke-dashoffset: 408; transition: stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1); }
+    .ring-fill.go { stroke-dashoffset: var(--dash); }
+    .ring-num { position: relative; font-family: 'Playfair Display', serif; font-size: 2.6rem; color: var(--gold); line-height: 1; }
+    .ring-denom { position: relative; font-size: .9rem; color: var(--muted); }
+
+    .score-badge-pill { display: inline-block; padding: .4rem 1.3rem; border-radius: 99px; font-size: .8rem; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .b-green  { background: rgba(76,175,125,.18); color: var(--green);  border: 1px solid rgba(76,175,125,.35); }
+    .b-gold   { background: rgba(201,168,76,.15); color: var(--gold);   border: 1px solid rgba(201,168,76,.35); }
+    .b-orange { background: rgba(224,158,85,.15); color: var(--orange); border: 1px solid rgba(224,158,85,.35); }
+    .b-red    { background: rgba(224,85,85,.12);  color: var(--red);    border: 1px solid rgba(224,85,85,.3); }
+
+    .score-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #fff; margin-bottom: .7rem; }
+    .score-desc  { font-size: .9rem; color: var(--muted); line-height: 1.75; max-width: 420px; margin: 0 auto 1.8rem; }
+
+    .breakdown { text-align: left; background: var(--dark4); border-radius: 10px; padding: 1.2rem; margin-bottom: 2rem; }
+    .breakdown-title { font-size: .75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: .9rem; }
+    .bk-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.04); font-size: .84rem; }
+    .bk-row:last-child { border-bottom: none; }
+    .bk-q { color: var(--muted); }
+    .bk-pts { font-weight: 700; }
+    .c-green  { color: var(--green); }
+    .c-orange { color: var(--orange); }
+    .c-red    { color: var(--red); }
+
+    .score-btns { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--dark2); border-top: 1px solid rgba(201,168,76,.1); padding: 2.8rem 1.5rem; text-align: center; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--gold); margin-bottom: .5rem; }
+    footer p { font-size: .82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── REVEAL ─── */
+    .rev { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
+    .rev.in { opacity: 1; transform: translateY(0); }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--dark4); border-radius: 4px; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      section { padding: 3.5rem 1.1rem; }
+      .q-box { padding: 1.4rem; }
+      .score-screen { padding: 1.8rem 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">Hôtel<span>Manager</span></a>
+  <ul class="nav-links">
+    <li><a href="#apprendre">Apprendre</a></li>
+    <li><a href="#conseils">Conseils</a></li>
+    <li><a href="#quiz" class="nav-btn">Quiz →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">⭐ Formation Management Hôtelier</span>
+    <h1>Devenez un <em>excellent</em><br>manager hôtelier</h1>
+    <p>Apprenez les fondamentaux, testez vos connaissances avec 4 quiz thématiques et découvrez votre profil de manager.</p>
+    <div class="hero-btns">
+      <a href="#apprendre" class="btn btn-gold">📚 Commencer à apprendre</a>
+      <a href="#quiz" class="btn btn-ghost">🎯 Faire un quiz</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="rev"><div class="stat-n">5</div><div class="stat-l">Modules de formation</div></div>
+    <div class="rev"><div class="stat-n">5</div><div class="stat-l">Quiz thématiques</div></div>
+    <div class="rev"><div class="stat-n">35</div><div class="stat-l">Questions au total</div></div>
+    <div class="rev"><div class="stat-n">20</div><div class="stat-l">Points par quiz</div></div>
+  </div>
+</div>
+
+<!-- APPRENDRE -->
+<section id="apprendre">
+  <div class="container">
+    <div class="rev">
+      <span class="s-tag">Formation</span>
+      <h2 class="s-title">Les 5 piliers du manager hôtelier</h2>
+      <p class="s-sub">Cliquez sur un module pour lire son contenu complet. Chaque module couvre un aspect essentiel du management hôtelier.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="mod-card rev" onclick="openMod(0)">
+        <img class="mod-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=700&q=75" alt="Leadership" />
+        <div class="mod-body">
+          <span class="mod-tag">Module 01 — Leadership</span>
+          <h3>Leadership & Management d'équipe</h3>
+          <p>Inspirez vos équipes, déléguez efficacement et créez une culture de l'excellence.</p>
+        </div>
+        <div class="mod-footer">
+          <span>7 points clés</span>
+          <span class="mod-arrow">→</span>
+        </div>
+      </div>
+      <div class="mod-card rev" onclick="openMod(1)">
+        <img class="mod-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=700&q=75" alt="Service client" />
+        <div class="mod-body">
+          <span class="mod-tag">Module 02 — Service Client</span>
+          <h3>L'excellence du service client</h3>
+          <p>Transformez chaque séjour en souvenir mémorable et fidélisez votre clientèle.</p>
+        </div>
+        <div class="mod-footer">
+          <span>7 points clés</span>
+          <span class="mod-arrow">→</span>
+        </div>
+      </div>
+      <div class="mod-card rev" onclick="openMod(2)">
+        <img class="mod-img" src="https://images.unsplash.com/photo-1444653389962-8149286c578a?w=700&q=75" alt="Finance" />
+        <div class="mod-body">
+          <span class="mod-tag">Module 03 — Finance</span>
+          <h3>Gestion financière & rentabilité</h3>
+          <p>Maîtrisez les KPIs, optimisez les coûts et pilotez la performance.</p>
+        </div>
+        <div class="mod-footer">
+          <span>7 points clés</span>
+          <span class="mod-arrow">→</span>
+        </div>
+      </div>
+      <div class="mod-card rev" onclick="openMod(3)">
+        <img class="mod-img" src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=75" alt="Opérations" />
+        <div class="mod-body">
+          <span class="mod-tag">Module 04 — Opérations</span>
+          <h3>Gestion des opérations hôtelières</h3>
+          <p>Coordonnez tous vos départements avec fluidité au quotidien.</p>
+        </div>
+        <div class="mod-footer">
+          <span>7 points clés</span>
+          <span class="mod-arrow">→</span>
+        </div>
+      </div>
+      <div class="mod-card rev" onclick="openMod(4)">
+        <img class="mod-img" src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=700&q=75" alt="Communication" />
+        <div class="mod-body">
+          <span class="mod-tag">Module 05 — Communication</span>
+          <h3>Communication & Gestion des conflits</h3>
+          <p>Communiquez avec impact et désamorcez les tensions efficacement.</p>
+        </div>
+        <div class="mod-footer">
+          <span>7 points clés</span>
+          <span class="mod-arrow">→</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:2.5rem;">
+      <a href="#quiz" class="btn btn-gold rev">🎯 Tester mes connaissances →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONSEILS -->
+<section id="conseils">
+  <div class="container">
+    <div class="rev">
+      <span class="s-tag">Bonnes pratiques</span>
+      <h2 class="s-title">Les règles d'or du bon manager</h2>
+    </div>
+    <div class="tips-grid">
+      <div class="tip rev"><div class="tip-icon">🎯</div><h4>Fixez des objectifs clairs</h4><p>Chaque collaborateur doit savoir ce qu'on attend de lui. Des objectifs SMART motivent et donnent du sens.</p></div>
+      <div class="tip rev"><div class="tip-icon">👂</div><h4>Pratiquez l'écoute active</h4><p>Écoutez avant de parler. Reformulez, posez des questions ouvertes et ne coupez jamais la parole.</p></div>
+      <div class="tip rev"><div class="tip-icon">⚡</div><h4>Réagissez vite aux problèmes</h4><p>En hôtellerie, chaque minute compte. Une réponse rapide transforme une mauvaise expérience en fidélité.</p></div>
+      <div class="tip rev"><div class="tip-icon">📊</div><h4>Pilotez par les données</h4><p>Taux d'occupation, RevPAR, satisfaction client… Analysez vos indicateurs régulièrement.</p></div>
+      <div class="tip rev"><div class="tip-icon">🌱</div><h4>Formez votre équipe</h4><p>Investir dans la formation, c'est investir dans la qualité de service et réduire le turnover.</p></div>
+      <div class="tip rev"><div class="tip-icon">🤝</div><h4>Cultivez la cohésion</h4><p>Favorisez la communication interdépartementale et célébrez les succès collectifs.</p></div>
+      <div class="tip rev"><div class="tip-icon">🛡️</div><h4>Anticipez les crises</h4><p>Élaborez des plans d'urgence. Un manager préparé garde son sang-froid et rassure son équipe.</p></div>
+      <div class="tip rev"><div class="tip-icon">✨</div><h4>Montrez l'exemple</h4><p>Votre comportement définit la culture de l'hôtel. Appliquez en premier les standards que vous demandez.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="quiz-header rev">
+      <span class="s-tag">Évaluation</span>
+      <h2 class="s-title">Choisissez votre quiz</h2>
+      <p class="s-sub" style="margin:0 auto;">5 quiz de 3 niveaux — commencez par Facile et progressez. <strong style="color:var(--gold)">Cliquez sur les mots soulignés</strong> pour avoir leur définition en langage simple.</p>
+    </div>
+
+    <!-- Filtres difficulté -->
+    <div class="diff-filters rev" id="diffFilters">
+      <button class="diff-btn active" data-level="all"    onclick="filterLevel('all')">Tous les niveaux</button>
+      <button class="diff-btn"        data-level="facile" onclick="filterLevel('facile')">🟢 Facile</button>
+      <button class="diff-btn"        data-level="moyen"  onclick="filterLevel('moyen')">🟡 Moyen</button>
+      <button class="diff-btn"        data-level="dur"    onclick="filterLevel('dur')">🔴 Difficile</button>
+    </div>
+
+    <!-- Sélection (généré par JS) -->
+    <div class="quiz-choice-grid rev" id="quizChoiceGrid"></div>
+
+    <!-- Zone quiz actif -->
+    <div id="quizArea">
+      <div class="quiz-top">
+        <div class="quiz-top-title" id="quizTitle"></div>
+        <div class="quiz-score-badge">Score : <span id="liveScore">0</span> / <span id="maxScore">10</span></div>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span>Question <span id="qNum">1</span> sur <span id="qTotal">5</span></span>
+          <span id="qPct">0%</span>
+        </div>
+        <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+      </div>
+      <div id="qContainer"></div>
+      <div class="warn-box" id="warnBox">⚠️ Choisissez une réponse avant de continuer.</div>
+      <div class="q-nav">
+        <span class="back-link" onclick="backToChoice()">← Choisir un autre quiz</span>
+        <button class="btn btn-gold" id="nextBtn" onclick="handleNext()">Valider →</button>
+      </div>
+    </div>
+
+    <!-- Score final -->
+    <div class="score-screen" id="scoreScreen">
+      <div class="score-ring">
+        <svg viewBox="0 0 150 150">
+          <circle class="ring-bg" cx="75" cy="75" r="65"/>
+          <circle class="ring-fill" id="ringFill" cx="75" cy="75" r="65"/>
+        </svg>
+        <div style="position:relative;text-align:center;">
+          <div class="ring-num" id="ringNum">0</div>
+          <div class="ring-denom" id="ringDenom">/20</div>
+        </div>
+      </div>
+      <div class="score-badge-pill" id="scorePill"></div>
+      <h3 class="score-title" id="scoreTitle"></h3>
+      <p  class="score-desc"  id="scoreDesc"></p>
+      <div class="breakdown">
+        <div class="breakdown-title">Détail de vos réponses</div>
+        <div id="breakdownRows"></div>
+      </div>
+      <div class="score-btns">
+        <button class="btn btn-ghost" onclick="replayQuiz()">↺ Recommencer ce quiz</button>
+        <button class="btn btn-gold"  onclick="backToChoice()">→ Choisir un autre quiz</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HôtelManager</div>
+  <p>Développez votre leadership, élevez votre établissement.<br>Formez-vous, pratiquez et devenez le manager que votre équipe mérite.</p>
+</footer>
+
+<!-- OVERLAY MODULE -->
+<div class="overlay" id="modOverlay" onclick="closeMod(event)">
+  <div class="overlay-box" id="modBox">
+    <button class="ov-close" onclick="closeMod()">✕</button>
+    <img class="ov-img" id="modImg" src="" alt="" />
+    <div class="ov-body" id="modBody"></div>
+  </div>
+</div>
+
+<!-- GLOSSARY POPUP -->
+<div class="gloss-popup" id="glossPopup">
+  <button class="gloss-popup-close" onclick="hideGloss()">✕</button>
+  <div class="gloss-popup-word" id="glossWord"></div>
+  <div class="gloss-popup-def"  id="glossDef"></div>
+</div>
+
+<script>
+// ═══════════════════════════ GLOSSAIRE ════════════════════════════════════
+const GLOSSARY = {
+  "RevPAR":          "Revenu par chambre disponible. On divise l'argent total gagné par le nombre total de chambres — même celles qui sont vides. C'est le chiffre le plus important en hôtellerie pour mesurer la performance.",
+  "ADR":             "Prix moyen par chambre vendue dans la journée. Si vous vendez 10 chambres à 100€ et 5 à 120€, votre ADR est environ 107€.",
+  "KPI":             "Indicateur clé de performance — un chiffre qu'on suit régulièrement pour savoir si on est sur la bonne voie. Exemples : taux d'occupation, satisfaction client, nombre de plaintes.",
+  "KPIs":            "Indicateurs clés de performance — des chiffres qu'on suit régulièrement pour savoir si on va dans la bonne direction.",
+  "OTA":             "Site internet comme Booking.com, Expedia ou Hotels.com qui vend vos chambres en échange d'une commission (souvent 15 à 25% du prix de la chambre).",
+  "yield management":"Technique pour vendre les chambres au bon prix selon la demande. Quand l'hôtel est presque complet, on monte les prix. Quand il est peu rempli, on les baisse pour attirer plus de clients.",
+  "upselling":       "Proposer au client quelque chose de mieux contre un supplément. Exemple : 'Pour 20€ de plus, vous pouvez avoir une chambre avec vue sur la mer.'",
+  "cross-selling":   "Proposer des services en plus à un client. Exemple : proposer le petit-déjeuner, un soin au spa ou une excursion quand quelqu'un réserve sa chambre.",
+  "GOP":             "Ce qui reste à l'hôtel après avoir payé toutes les dépenses de fonctionnement (personnel, énergie, nourriture...). C'est le bénéfice brut d'exploitation.",
+  "NPS":             "Score de recommandation — un chiffre entre -100 et +100 qui mesure si vos clients recommanderaient votre hôtel à leurs amis. Au-dessus de 50, c'est excellent.",
+  "CRM":             "Logiciel qui enregistre toutes les informations sur vos clients : leurs préférences, leur historique de séjours, leurs anniversaires... Très utile pour personnaliser l'accueil.",
+  "turnover":        "Le remplacement des employés qui partent. Un turnover élevé signifie que beaucoup de gens quittent l'hôtel souvent. Cela coûte très cher en recrutement et formation.",
+  "housekeeping":    "Le service qui s'occupe du nettoyage des chambres. Les femmes de chambre et valets font partie du housekeeping.",
+  "F&B":             "Food & Beverage — tout ce qui concerne la nourriture et les boissons dans l'hôtel : restaurant, bar, room service, petit-déjeuner.",
+  "SOP":             "Procédure Opérationnelle Standard — une fiche qui explique étape par étape comment faire une tâche. Exemple : comment accueillir un client à la réception.",
+  "SMART":           "Méthode pour fixer de bons objectifs. Ils doivent être : Spécifiques (clairs), Mesurables (chiffrés), Atteignables, Réalistes, avec un délai dans le Temps.",
+  "LEAPS":           "Méthode pour gérer un client mécontent en 5 étapes : L=Écouter, E=Empathiser, A=Questionner (Ask), P=Reformuler (Paraphrase), S=Résoudre (Solve).",
+  "BAR":             "Best Available Rate — le meilleur tarif disponible sur votre site à un moment donné. Il change automatiquement selon la disponibilité et la demande.",
+  "compset":         "Vos concurrents directs — les hôtels similaires au vôtre. On compare souvent son RevPAR à celui du compset pour savoir si on fait mieux ou moins bien que le marché.",
+  "burn-out":        "Épuisement professionnel intense causé par un travail trop chargé pendant trop longtemps. Le manager doit veiller à ce que son équipe ne dépasse pas ses limites.",
+  "food cost":       "Le coût des ingrédients et de la nourriture dans un restaurant. Un food cost sain est en dessous de 30% du prix de vente.",
+  "check-in":        "L'arrivée du client à l'hôtel et l'enregistrement de sa réservation à la réception.",
+  "check-out":       "Le départ du client et le règlement de sa note.",
+  "amenities":       "Produits et équipements mis gratuitement dans les chambres : shampoing, gel douche, café, robe de chambre, Wi-Fi... Ce sont les 'petits plus' que les clients apprécient.",
+  "feedback":        "Retour d'information — ce qu'un client ou un employé vous dit sur votre travail pour vous aider à vous améliorer. Positif ou négatif, c'est un cadeau.",
+  "médiation":       "Réunion organisée par le manager pour aider deux personnes en conflit à se comprendre et trouver un accord. Le manager joue un rôle neutre, sans prendre parti.",
+  "VIP":             "Client très important qui doit recevoir une attention et un service particuliers. Souvent : client régulier, personnalité connue, ou voyageur d'affaires fidèle.",
+  "RGI":             "Revenue Generation Index — compare votre RevPAR à la moyenne de vos concurrents. Au-dessus de 1 = vous surperformez le marché. En dessous = vous faites moins bien.",
+  "PDCA":            "Plan-Do-Check-Act — méthode pour améliorer continuellement : Planifier → Faire → Vérifier → Ajuster. On recommence en boucle pour progresser.",
+  "corporate":       "Clientèle d'entreprise — des voyageurs qui viennent pour le travail. Souvent fidèles et nombreux, ils bénéficient de tarifs négociés avec l'hôtel.",
+  "packages":        "Offres groupées qui combinent plusieurs services en un seul prix. Exemple : chambre + petit-déjeuner + accès spa à un tarif avantageux.",
+  "surbooking":      "Accepter plus de réservations que de chambres disponibles, en comptant sur les annulations. Risqué si trop de clients se présentent en même temps."
+};
+
+// ═══════════════════════════ GLOSSAIRE — FONCTIONS ════════════════════════
+function tagTerms(text) {
+  let result = text;
+  Object.keys(GLOSSARY)
+    .sort((a, b) => b.length - a.length)
+    .forEach(term => {
+      const esc = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const re = new RegExp('\\b' + esc + '\\b', 'gi');
+      result = result.replace(re, m =>
+        `<span class="gloss-term" onclick="showGloss(event,'${term}')">${m}</span>`
+      );
+    });
+  return result;
+}
+
+function showGloss(event, term) {
+  event.stopPropagation();
+  const key = Object.keys(GLOSSARY).find(k => k.toLowerCase() === term.toLowerCase()) || term;
+  const def = GLOSSARY[key];
+  if (!def) return;
+  const popup = document.getElementById('glossPopup');
+  document.getElementById('glossWord').textContent = key;
+  document.getElementById('glossDef').textContent  = def;
+  const x = Math.min(event.clientX, window.innerWidth  - 320);
+  const y = Math.min(event.clientY + 16, window.innerHeight - 160);
+  popup.style.left = x + 'px';
+  popup.style.top  = y + 'px';
+  popup.classList.add('show');
+}
+
+function hideGloss() {
+  document.getElementById('glossPopup').classList.remove('show');
+}
+
+document.addEventListener('click', e => {
+  if (!e.target.classList.contains('gloss-term') && !e.target.closest('#glossPopup')) {
+    hideGloss();
+  }
+});
+
+// ═══════════════════════════ DONNÉES MODULES ═══════════════════════════════
+const MODS = [
+  {
+    tag:'Module 01 — Leadership', title:"Leadership & Management d'équipe",
+    img:'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=900&q=80',
+    simple:"En clair : le leadership c'est être quelqu'un que les autres ont envie de suivre. Pas besoin d'avoir fait des études — il faut être honnête, à l'écoute, et montrer l'exemple. Un bon chef d'équipe dit clairement ce qu'il veut, fait confiance à ses gens, et leur donne envie de bien travailler.",
+    intro:"Le leadership hôtelier va bien au-delà de la gestion des tâches. Un grand manager inspire confiance, crée une vision partagée et développe le potentiel de chaque collaborateur.",
+    pts:["Définissez une vision claire et communiquez-la régulièrement à toute votre équipe.","Adaptez votre style de management selon l'expérience de chaque collaborateur.","Pratiquez le feedback constructif : reconnaissez les réussites publiquement, corrigez en privé.","Déléguez avec confiance : donnez de l'autonomie tout en maintenant un cadre clair.","Gérez les conflits rapidement avant qu'ils n'impactent le service.","Valorisez la diversité des profils pour stimuler la créativité et l'innovation.","Organisez des réunions régulières pour maintenir la cohésion et l'information."]
+  },
+  {
+    tag:'Module 02 — Service Client', title:"L'excellence du service client",
+    img:'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=900&q=80',
+    simple:"En clair : le service client c'est faire en sorte que chaque personne reparte avec le sourire. Pour ça, il faut agir vite quand quelque chose ne va pas, et traiter chaque client comme s'il était unique. Un client content revient et en parle autour de lui — c'est la meilleure publicité.",
+    intro:"Dans l'hôtellerie, la qualité du service est votre premier produit. Chaque interaction est une opportunité de créer un souvenir mémorable et de fidéliser votre clientèle.",
+    pts:["Formez vos équipes à anticiper les besoins avant même que le client ne les exprime.","Mettez en place des standards de service précis et vérifiez leur application quotidiennement.","Traitez chaque réclamation comme un cadeau : c'est une chance de vous améliorer.","Personnalisez l'accueil grâce aux informations client (anniversaires, préférences, historique).","Répondez à tous les avis en ligne avec professionnalisme, positifs comme négatifs.","Formez le personnel de nuit avec autant de soin que le personnel de jour.","Instaurez une culture du 'oui' : cherchez toujours une solution avant de dire non."]
+  },
+  {
+    tag:'Module 03 — Finance', title:"Gestion financière & rentabilité",
+    img:'https://images.unsplash.com/photo-1444653389962-8149286c578a?w=900&q=80',
+    simple:"En clair : gérer les finances d'un hôtel c'est savoir combien on gagne, combien on dépense, et pourquoi. Vous n'avez pas besoin d'être comptable — il faut comprendre les chiffres clés : combien de chambres sont remplies, combien chaque chambre rapporte. L'objectif : gagner plus en dépensant mieux.",
+    intro:"Un bon manager hôtelier maîtrise les chiffres de son établissement. Comprendre et piloter la performance financière est essentiel pour la pérennité de l'hôtel.",
+    pts:["Suivez quotidiennement les KPIs essentiels : taux d'occupation, RevPAR, ADR, GOP.","Élaborez un budget annuel réaliste et analysez les écarts chaque mois.","Optimisez le yield management pour maximiser les revenus par chambre disponible.","Réduisez les coûts sans impacter la qualité : auditez régulièrement vos fournisseurs.","Identifiez les centres de profit et les sources de dépenses cachées.","Anticipez les saisons basses avec des offres packagées et des événements.","Formez vos responsables de département à la lecture et l'analyse de leurs budgets."]
+  },
+  {
+    tag:'Module 04 — Opérations', title:"Gestion des opérations hôtelières",
+    img:'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=900&q=80',
+    simple:"En clair : les opérations c'est tout ce qui se passe chaque jour pour que l'hôtel tourne bien. La réception accueille les clients, le housekeeping nettoie les chambres, le F&B sert les repas, la technique répare ce qui est cassé. Votre rôle : coordonner tout ça et vous assurer que chaque équipe sait quoi faire.",
+    intro:"Les opérations hôtelières forment un écosystème complexe où chaque département doit fonctionner en harmonie. La coordination et l'anticipation sont vos meilleurs alliés.",
+    pts:["Maîtrisez les rouages de chaque département : réception, housekeeping, F&B, technique.","Créez des procédures opérationnelles standardisées (SOP) pour chaque poste clé.","Mettez en place un système de communication interdépartemental efficace.","Planifiez les effectifs en fonction des prévisions d'occupation et d'activité.","Anticipez la maintenance préventive pour éviter les pannes et les plaintes clients.","Effectuez des rondes régulières pour maintenir les standards de l'établissement.","Préparez et testez des plans de gestion de crise pour chaque type d'urgence."]
+  },
+  {
+    tag:'Module 05 — Communication', title:"Communication & Gestion des conflits",
+    img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=900&q=80',
+    simple:"En clair : bien communiquer c'est savoir parler ET écouter. En tant que manager, vous devez expliquer clairement ce que vous attendez, donner du feedback sans blesser, et gérer les tensions avant qu'elles deviennent de gros problèmes. Ça s'apprend et ça se pratique tous les jours.",
+    intro:"La communication est la colonne vertébrale de votre management. Savoir s'exprimer clairement, écouter activement et gérer les tensions sont des compétences qui se travaillent.",
+    pts:["Pratiquez l'écoute active : reformulez, posez des questions ouvertes, ne coupez pas la parole.","Adaptez votre communication selon les personnes et les situations.","En cas de conflit entre collaborateurs, organisez une médiation structurée en privé.","Face à un client mécontent, validez ses émotions avant de proposer une solution.","Communiquez les mauvaises nouvelles rapidement et honnêtement, avec un plan d'action.","Utilisez des outils digitaux pour fluidifier la communication entre départements.","Développez l'intelligence émotionnelle de vos équipes par des formations régulières."]
+  }
+];
+
+// ═══════════════════════════ DONNÉES QUIZ ══════════════════════════════════
+const QUIZZES = [
+  // ── FACILE ──────────────────────────────────────────────────────────────
+  {
+    title:"Quiz — Les Bases du Manager", shortTitle:"Les Bases du Manager",
+    icon:"🌱", desc:"Vous débutez ? Commencez ici. Des situations du quotidien expliquées en langage simple, sans jargon.",
+    level:"facile", levelFr:"Facile",
+    max: 10,
+    qs:[
+      {
+        q:"Un employé arrive en retard pour la 3ème fois cette semaine. Que faites-vous en premier ?",
+        opts:[
+          {t:"Vous faites comme si vous n'aviez pas remarqué.",pts:0,fb:"Ignorer le problème ne le résout pas et envoie le mauvais signal à l'équipe."},
+          {t:"Vous lui parlez en privé pour comprendre pourquoi.",pts:2,fb:"Parfait ! Comprendre avant de juger, c'est la base d'un bon manager."},
+          {t:"Vous le signalez devant tout le monde en réunion.",pts:0,fb:"Humilier quelqu'un devant l'équipe brise la confiance et crée une mauvaise ambiance."},
+          {t:"Vous demandez à ses collègues de le surveiller.",pts:0,fb:"Cela crée de la méfiance dans l'équipe."}
+        ], best:1,
+        expl:"La première étape est toujours de parler en privé. L'employé a peut-être un problème de transport ou une situation difficile à la maison. Comprendre la cause permet de vraiment aider."
+      },
+      {
+        q:"Vous devez expliquer une nouvelle règle à votre équipe. Comment faites-vous ?",
+        opts:[
+          {t:"Vous écrivez un email et espérez que tout le monde le lira.",pts:1,fb:"L'email peut fonctionner pour des infos simples, mais une réunion est plus efficace."},
+          {t:"Vous expliquez en réunion avec des exemples concrets et répondez aux questions.",pts:2,fb:"Excellent ! Une explication directe avec des exemples, c'est la meilleure façon."},
+          {t:"Vous ne dites rien et attendez que les gens s'adaptent.",pts:0,fb:"Sans communication, les gens ne peuvent pas s'adapter."},
+          {t:"Vous demandez à un collègue de l'expliquer à votre place.",pts:0,fb:"C'est votre rôle en tant que manager de communiquer les décisions importantes."}
+        ], best:1,
+        expl:"La communication directe avec des exemples concrets est toujours la meilleure méthode. Une bonne explication évite les erreurs et les malentendus — et montre que vous respectez votre équipe."
+      },
+      {
+        q:"Un client se plaint que sa chambre est trop froide. Quelle est votre première réaction ?",
+        opts:[
+          {t:"Vous lui dites que c'est normal en cette saison.",pts:0,fb:"Minimiser le problème d'un client ne le satisfait pas du tout."},
+          {t:"Vous vous excusez et envoyez quelqu'un régler le problème immédiatement.",pts:2,fb:"Parfait ! Agir vite et s'excuser, c'est exactement ce qu'attend un client."},
+          {t:"Vous lui proposez de changer de chambre si le problème dure.",pts:1,fb:"Bien, mais agir immédiatement sur le problème est encore mieux."},
+          {t:"Vous lui demandez d'attendre jusqu'au lendemain matin.",pts:0,fb:"Faire attendre pour un problème de confort, c'est inacceptable."}
+        ], best:1,
+        expl:"Un client mécontent veut deux choses : que son problème soit réglé et qu'on s'excuse. Plus vous agissez vite, plus le client repart satisfait — et parfois encore plus content qu'avant !"
+      },
+      {
+        q:"Votre équipe a très bien travaillé cette semaine et l'hôtel a reçu des compliments. Comment réagissez-vous ?",
+        opts:[
+          {t:"Vous ne dites rien, c'est leur travail normal.",pts:0,fb:"Ne pas féliciter une bonne performance, c'est une occasion manquée de motiver."},
+          {t:"Vous félicitez l'équipe devant tout le monde et reconnaissez les efforts de chacun.",pts:2,fb:"Parfait ! La reconnaissance publique motive toute l'équipe."},
+          {t:"Vous envoyez un message rapide à toute l'équipe.",pts:1,fb:"Bien, mais une reconnaissance en direct a beaucoup plus d'impact."},
+          {t:"Vous vous attribuez le mérite devant la direction.",pts:0,fb:"Un bon manager valorise son équipe, pas lui-même."}
+        ], best:1,
+        expl:"Féliciter son équipe ne coûte rien et rapporte beaucoup. Les gens qui se sentent reconnus travaillent mieux, restent plus longtemps et donnent le meilleur d'eux-mêmes."
+      },
+      {
+        q:"Vous n'êtes pas d'accord avec une décision prise par votre supérieur. Que faites-vous ?",
+        opts:[
+          {t:"Vous critiquez la décision devant votre équipe.",pts:0,fb:"Critiquer ses supérieurs devant l'équipe nuit à la cohésion et à votre crédibilité."},
+          {t:"Vous acceptez sans rien dire même si vous pensez que c'est une erreur.",pts:1,fb:"Accepter oui — mais exprimer son point de vue en privé est aussi important."},
+          {t:"Vous demandez un entretien privé pour exprimer vos réserves calmement.",pts:2,fb:"Excellent ! Exprimer son désaccord en privé et avec respect, c'est du professionnalisme."},
+          {t:"Vous refusez d'appliquer la décision.",pts:0,fb:"Refuser sans en parler crée un conflit sérieux et nuit à votre poste."}
+        ], best:2,
+        expl:"Un bon manager sait défendre son point de vue en privé et de façon respectueuse. Et une fois la décision prise, il l'applique avec son équipe — même s'il n'est pas d'accord."
+      }
+    ]
+  },
+  // ── MOYEN ───────────────────────────────────────────────────────────────
+  {
+    title:"Quiz — Leadership & Équipe", shortTitle:"Leadership & Équipe",
+    icon:"👑", desc:"Testez vos compétences en management d'équipe, délégation et gestion des conflits.",
+    level:"moyen", levelFr:"Moyen",
+    max: 10,
+    qs:[
+      {
+        q:"Deux membres de votre équipe ont un conflit ouvert qui affecte le service. Que faites-vous en premier ?",
+        opts:[
+          {t:"Vous ignorez la situation en espérant qu'elle se règle seule.",pts:0,fb:"Ignorer un conflit l'aggrave toujours."},
+          {t:"Vous réunissez les deux ensemble immédiatement devant l'équipe.",pts:0,fb:"Confronter des personnes en conflit devant les autres peut aggraver les tensions."},
+          {t:"Vous rencontrez chaque personne séparément d'abord, puis organisez une médiation.",pts:2,fb:"Parfait ! La médiation individuelle puis collective est la meilleure approche."},
+          {t:"Vous sanctionnez les deux par un avertissement.",pts:0,fb:"Sanctionner sans comprendre ne résout pas le problème."}
+        ], best:2,
+        expl:"La bonne démarche : entretiens individuels → comprendre chaque point de vue → médiation collective → règles de collaboration claires → suivi régulier."
+      },
+      {
+        q:"Un bon employé devient moins performant depuis 3 semaines. Votre première action ?",
+        opts:[
+          {t:"Vous attendez que ça passe tout seul.",pts:0,fb:"L'attentisme face à une baisse de performance coûte cher."},
+          {t:"Vous lui fixez un avertissement écrit immédiatement.",pts:0,fb:"Sanctionner sans comprendre la cause est contre-productif."},
+          {t:"Vous organisez un entretien privé bienveillant pour comprendre ce qui se passe.",pts:2,fb:"Excellent ! L'écoute et l'empathie sont les premières armes du bon manager."},
+          {t:"Vous chargez ses collègues de le surveiller.",pts:0,fb:"La surveillance par les pairs crée de la méfiance et nuit à la cohésion."}
+        ], best:2,
+        expl:"Un employé qui baisse en performance a souvent une raison valide : problème personnel, manque de formation, désengagement. L'entretien bienveillant révèle la cause et permet d'agir."
+      },
+      {
+        q:"Comment déléguez-vous une tâche importante à un collaborateur junior ?",
+        opts:[
+          {t:"Vous lui expliquez la tâche en détail et le laissez se débrouiller seul.",pts:1,fb:"Expliquer c'est bien, mais il faut aussi un suivi."},
+          {t:"Vous faites la tâche vous-même pour être sûr qu'elle soit bien faite.",pts:0,fb:"Ne pas déléguer empêche le développement de l'équipe et vous surcharge."},
+          {t:"Vous expliquez l'objectif, les ressources disponibles, et planifiez des points de suivi réguliers.",pts:2,fb:"Parfait ! Déléguer avec un cadre clair et un suivi, c'est la clé."},
+          {t:"Vous lui donnez la tâche sans explication pour qu'il apprenne par lui-même.",pts:0,fb:"Déléguer sans expliquer mène à des erreurs évitables."}
+        ], best:2,
+        expl:"La délégation efficace = objectif clair + ressources identifiées + autonomie + points de contrôle + droit à l'erreur encadrée."
+      },
+      {
+        q:"Vous devez annoncer une mauvaise nouvelle à votre équipe (baisse des primes). Comment procédez-vous ?",
+        opts:[
+          {t:"Vous envoyez un e-mail collectif pour éviter les questions.",pts:0,fb:"Un e-mail pour une mauvaise nouvelle est perçu comme un manque de courage."},
+          {t:"Vous réunissez l'équipe, expliquez le contexte honnêtement et répondez aux questions.",pts:2,fb:"Excellent ! La transparence et le face-à-face construisent la confiance."},
+          {t:"Vous déléguez l'annonce à un responsable intermédiaire.",pts:1,fb:"Acceptable si le contexte le justifie, mais le manager direct a plus d'impact."},
+          {t:"Vous attendez que l'équipe l'apprenne par elle-même.",pts:0,fb:"Laisser l'équipe apprendre une mauvaise nouvelle de façon informelle est très dommageable."}
+        ], best:1,
+        expl:"Les mauvaises nouvelles doivent être annoncées en face-à-face, rapidement, avec honnêteté sur le contexte, respect pour les émotions et un espace pour les questions."
+      },
+      {
+        q:"Comment motivez-vous votre équipe pendant une haute saison très chargée ?",
+        opts:[
+          {t:"Vous imposez des heures supplémentaires sans compensation.",pts:0,fb:"Sans compensation, les heures sup créent du ressentiment et de l'épuisement."},
+          {t:"Vous promettez des récompenses futures sans garantie.",pts:0,fb:"Les promesses non tenues détruisent la confiance."},
+          {t:"Vous reconnaissez les efforts, organisez des moments de cohésion et accordez des compensations concrètes.",pts:2,fb:"Parfait ! La reconnaissance immédiate et concrète est le meilleur moteur de motivation."},
+          {t:"Vous dites à l'équipe que c'est leur job et qu'ils doivent s'y faire.",pts:0,fb:"Minimiser les efforts de l'équipe démotive et pousse au désengagement."}
+        ], best:2,
+        expl:"En haute saison : plannings visibles à l'avance, primes de performance, repas d'équipe, messages de reconnaissance quotidiens, rotation équitable des congés."
+      }
+    ]
+  },
+  {
+    title:"Quiz — Service Client", shortTitle:"Service Client",
+    icon:"🌟", desc:"Évaluez votre capacité à gérer les clients, les plaintes et les situations délicates.",
+    level:"moyen", levelFr:"Moyen",
+    max: 10,
+    qs:[
+      {
+        q:"Un client VIP arrive à la réception et sa chambre n'est pas encore prête alors qu'il est 15h. Comment réagissez-vous ?",
+        opts:[
+          {t:"Vous lui dites d'attendre dans le lobby sans compensation.",pts:0,fb:"Faire attendre un VIP sans geste commercial est rédhibitoire."},
+          {t:"Vous vous excusez, proposez la salle de repos VIP, un rafraîchissement et une compensation.",pts:2,fb:"Excellent ! Transformer l'attente en expérience positive, c'est du grand hôtellerie."},
+          {t:"Vous lui proposez de revenir 1 heure plus tard.",pts:0,fb:"Renvoyer un client est une faute grave en hôtellerie."},
+          {t:"Vous blâmez le service ménage devant le client.",pts:0,fb:"Ne jamais critiquer son équipe devant un client."}
+        ], best:1,
+        expl:"Protocol VIP check-in tardif : excuse sincère → salon ou espace confortable → rafraîchissements → mise à jour régulière → surclassement si possible → compensation (breakfast, spa...)."
+      },
+      {
+        q:"Un client laisse un avis 2/5 en ligne décrivant une chambre sale. Que faites-vous ?",
+        opts:[
+          {t:"Vous ignorez l'avis, c'est un client difficile.",pts:0,fb:"89% des voyageurs lisent les réponses aux avis avant de réserver."},
+          {t:"Vous contestez publiquement la véracité de son témoignage.",pts:0,fb:"Contester un avis publiquement est perçu très négativement."},
+          {t:"Vous répondez en reconnaissant l'expérience, en vous excusant et en invitant à revenir.",pts:2,fb:"Parfait ! Une réponse bien rédigée rassure aussi les futurs clients."},
+          {t:"Vous demandez à la plateforme de supprimer l'avis.",pts:0,fb:"Les plateformes suppriment rarement les avis légitimes. Cela est inefficace et fuyant."}
+        ], best:2,
+        expl:"Réponse parfaite : 1) Remercier le retour 2) S'excuser sincèrement 3) Reconnaître les faits 4) Mentionner les actions correctives 5) Inviter à revenir — Tout en moins de 5 lignes."
+      },
+      {
+        q:"Un client demande un service non disponible à l'hôtel (baby-sitting). Que faites-vous ?",
+        opts:[
+          {t:"Vous dites simplement 'non, ce service n'est pas disponible.'",pts:0,fb:"Un simple non sans alternative laisse le client sans solution."},
+          {t:"Vous cherchez un prestataire de confiance et facilitez la mise en contact.",pts:2,fb:"Excellent ! Être un facilitateur même pour des services externes, c'est l'excellence."},
+          {t:"Vous promettez d'organiser le service sans savoir si c'est possible.",pts:0,fb:"Une promesse non tenue est pire qu'un refus."},
+          {t:"Vous conseillez au client d'appeler lui-même un concurrent.",pts:1,fb:"Orienter aide un peu mais vous fait perdre la main sur la relation client."}
+        ], best:1,
+        expl:"Avoir un réseau de partenaires locaux fiables (babysitters, guides, traiteurs) est un vrai avantage. La culture du 'oui conditionnel' transforme un non en opportunité de service."
+      },
+      {
+        q:"Un client se plaint agressivement à la réception devant d'autres clients. Comment gérez-vous la situation ?",
+        opts:[
+          {t:"Vous répondez sur le même ton pour montrer que vous ne vous laissez pas faire.",pts:0,fb:"La confrontation devant d'autres clients est catastrophique pour l'image."},
+          {t:"Vous l'ignorez jusqu'à ce qu'il se calme.",pts:0,fb:"Ignorer un client mécontent ne fait qu'alimenter sa frustration."},
+          {t:"Vous l'invitez calmement dans un espace privé, écoutez sans interrompre, puis proposez une solution.",pts:2,fb:"Parfait ! Isoler, écouter, proposer : la méthode en 3 temps."},
+          {t:"Vous appelez la sécurité immédiatement.",pts:0,fb:"Appeler la sécurité avant toute tentative de dialogue est disproportionné."}
+        ], best:2,
+        expl:"Méthode LEAPS : Listen (écouter), Empathize (empathiser), Ask (questionner), Paraphrase (reformuler), Solve (résoudre). Toujours dans un espace privé pour préserver la dignité."
+      },
+      {
+        q:"Comment personnalisez-vous l'accueil d'un client qui revient pour la 3ème fois dans votre hôtel ?",
+        opts:[
+          {t:"Vous l'accueillez comme un nouveau client, c'est plus simple.",pts:0,fb:"Ne pas reconnaître un client fidèle est une opportunité manquée."},
+          {t:"Vous utilisez son historique pour personnaliser sa chambre (fleurs, oreiller préféré) et l'accueillez par son nom.",pts:2,fb:"Parfait ! La personnalisation crée des souvenirs inoubliables et fidélise."},
+          {t:"Vous lui faites une remise, ça suffit.",pts:1,fb:"Une remise est appréciée, mais la personnalisation émotionnelle a plus d'impact."},
+          {t:"Vous lui donnez son ancienne chambre sans lui demander si elle lui convient.",pts:0,fb:"Les préférences changent. Il faut vérifier, pas présumer."}
+        ], best:1,
+        expl:"Le CRM hôtelier permet de noter : chambre préférée, allergie alimentaire, journaux demandés, occasion spéciale. Utiliser ces données lors du retour d'un client est la marque d'un hôtel d'excellence."
+      }
+    ]
+  },
+  // ── DIFFICILE ────────────────────────────────────────────────────────────
+  {
+    title:"Quiz — Gestion & Finance", shortTitle:"Gestion & Finance",
+    icon:"📊", desc:"Maîtrisez-vous les indicateurs financiers, les coûts et la stratégie commerciale ?",
+    level:"dur", levelFr:"Difficile",
+    max: 10,
+    qs:[
+      {
+        q:"Votre taux d'occupation baisse de 15% depuis 3 mois. Quelle est votre première action ?",
+        opts:[
+          {t:"Vous baissez drastiquement les tarifs pour remplir les chambres.",pts:1,fb:"Baisser les prix sans analyse peut dévaloriser votre image et éroder vos marges."},
+          {t:"Vous analysez les données pour identifier les causes avant d'agir.",pts:2,fb:"Parfait ! Diagnostiquer avant d'agir est la marque d'un manager stratège."},
+          {t:"Vous attendez la fin de la saison creuse.",pts:0,fb:"L'attentisme face à une baisse significative est très risqué."},
+          {t:"Vous blâmez l'équipe commerciale.",pts:0,fb:"Le blame game ne résout rien et détruit la cohésion."}
+        ], best:1,
+        expl:"Analysez d'abord : origine de la baisse (OTA, segment corporate, direct ?), comparaison vs. concurrents (RevPAR index), avis clients récents. Puis agissez avec un plan ciblé."
+      },
+      {
+        q:"La direction vous demande de réduire les coûts de 15% sans impacter le service. Comment procédez-vous ?",
+        opts:[
+          {t:"Vous réduisez les effectifs de ménage en premier.",pts:0,fb:"Réduire le ménage impacte directement la qualité perçue des chambres."},
+          {t:"Vous réduisez les amenities et les portions au restaurant.",pts:0,fb:"Réduire la qualité visible dégrade l'expérience client."},
+          {t:"Vous auditez tous les postes de dépenses : énergie, fournisseurs, gaspillage, processus.",pts:2,fb:"Excellent ! L'optimisation intelligente préserve la qualité tout en réduisant les coûts."},
+          {t:"Vous augmentez les prix pour compenser les coûts.",pts:0,fb:"Augmenter les prix sans valeur ajoutée peut faire fuir les clients."}
+        ], best:2,
+        expl:"Leviers d'optimisation sans impact client : renégociation fournisseurs (-5 à 15%), automatisation des processus, économies d'énergie (LED, thermostat intelligent), réduction du gaspillage alimentaire (jusqu'à 30% en restauration)."
+      },
+      {
+        q:"Qu'est-ce que le RevPAR et pourquoi est-ce l'indicateur clé de l'hôtellerie ?",
+        opts:[
+          {t:"C'est le chiffre d'affaires total de l'hôtel divisé par le nombre d'employés.",pts:0,fb:"Ce n'est pas la bonne définition."},
+          {t:"C'est le revenu généré par chambre disponible, qui combine taux d'occupation et prix moyen.",pts:2,fb:"Parfait ! Le RevPAR = ADR × taux d'occupation. Il mesure la performance globale."},
+          {t:"C'est le prix moyen d'une chambre vendue dans la semaine.",pts:0,fb:"Ce que vous décrivez est l'ADR (Average Daily Rate), pas le RevPAR."},
+          {t:"C'est le score de satisfaction client calculé mensuellement.",pts:0,fb:"Le score de satisfaction client, c'est le NPS ou le GSS, pas le RevPAR."}
+        ], best:1,
+        expl:"RevPAR = Revenue Per Available Room = ADR × Taux d'Occupation. C'est le meilleur indicateur car il combine à la fois la performance tarifaire et commerciale. Un RevPAR en hausse = stratégie gagnante."
+      },
+      {
+        q:"En haute saison, votre hôtel est complet. Comment maximisez-vous vos revenus ?",
+        opts:[
+          {t:"Vous laissez les tarifs fixes car l'hôtel est plein de toute façon.",pts:0,fb:"Même complet, on peut optimiser : upselling, restaurant, spa, services additionnels."},
+          {t:"Vous surbookez volontairement pour compenser les no-shows.",pts:1,fb:"Le surbooking est une pratique courante mais risquée si mal calibrée."},
+          {t:"Vous pratiquez l'upselling, proposez des packages et maximisez les revenus annexes.",pts:2,fb:"Excellent ! L'upselling et les revenus annexes peuvent augmenter le chiffre de 15 à 30%."},
+          {t:"Vous montez les tarifs de 50% sans préavis sur les OTA.",pts:0,fb:"Une hausse tarifaire brutale non justifiée nuit à la réputation et au référencement OTA."}
+        ], best:2,
+        expl:"Stratégies revenue en full occupancy : upselling (chambre supérieure, vue, étage élevé) + cross-selling (spa, restaurant, excursions) + gestion des no-shows + fermeture des canaux low-cost pour garder les tarifs premium."
+      },
+      {
+        q:"Un de vos restaurants d'hôtel perd de l'argent depuis 6 mois. Que faites-vous ?",
+        opts:[
+          {t:"Vous le fermez immédiatement pour stopper les pertes.",pts:0,fb:"Fermer sans analyser est une décision hâtive qui peut aggraver la situation."},
+          {t:"Vous analysez les coûts, la carte, la fréquentation et testez des ajustements progressifs.",pts:2,fb:"Parfait ! L'analyse avant l'action permet des décisions éclairées."},
+          {t:"Vous changez le chef sans autre modification.",pts:1,fb:"Le chef peut être une cause, mais rarement la seule. L'analyse globale s'impose."},
+          {t:"Vous baissez les prix de 30% pour attirer plus de clients.",pts:0,fb:"Baisser les prix sans analyse peut aggraver les pertes si les coûts ne suivent pas."}
+        ], best:1,
+        expl:"Analyse restaurant déficitaire : food cost (idéal < 30%), ticket moyen vs. couvertures, ingénierie de menu (quels plats génèrent le plus de marge ?), heures d'affluence, concurrence locale. Puis plan d'action ciblé."
+      }
+    ]
+  },
+  {
+    title:"Grand Quiz Général — Tous thèmes", shortTitle:"Grand Quiz Général",
+    icon:"🏆", desc:"Le test ultime qui couvre tous les domaines du management hôtelier. Réservé aux plus courageux !",
+    level:"dur", levelFr:"Difficile",
+    max: 20,
+    qs:[
+      {
+        q:"Un client VIP se plaint à 2h du matin que sa chambre est trop bruyante. Que faites-vous ?",
+        opts:[
+          {t:"Vous lui demandez de patienter jusqu'au matin.",pts:0,fb:"Faire attendre un VIP toute la nuit est inacceptable."},
+          {t:"Vous lui proposez immédiatement une chambre supérieure et des compensations.",pts:2,fb:"Parfait ! La réactivité et la générosité fidélisent un VIP."},
+          {t:"Vous expliquez que vous n'y pouvez rien, c'est une contrainte externe.",pts:0,fb:"Rejeter la responsabilité n'est jamais acceptable."},
+          {t:"Vous appelez le directeur général pour qu'il gère.",pts:1,fb:"Un bon manager doit être capable de gérer seul ce type de situation."}
+        ], best:1,
+        expl:"Un manager hôtelier doit décider vite et généreusement pour les clients VIP. Surclassement + compensation (petit-déjeuner, bon d'achat) transforme une mauvaise nuit en fidélité."
+      },
+      {
+        q:"Deux chefs de département ont un conflit qui affecte la coordination. Votre approche ?",
+        opts:[
+          {t:"Vous ignorez le problème, ils sont adultes.",pts:0,fb:"Ignorer un conflit entre responsables a des conséquences directes sur le service."},
+          {t:"Vous prenez parti pour l'un d'eux lors d'une réunion.",pts:0,fb:"Prendre parti publiquement divise l'équipe."},
+          {t:"Vous organisez une médiation individuelle puis collective avec des règles claires.",pts:2,fb:"Excellent ! La médiation structurée est la seule voie efficace."},
+          {t:"Vous sanctionnez les deux par un avertissement.",pts:0,fb:"Sanctionner sans médiation ne résout pas le fond du problème."}
+        ], best:2,
+        expl:"Médiation = entretiens séparés → compréhension mutuelle → session collective → accord écrit → suivi à 15 jours. Un conflit entre chefs coûte en productivité et en qualité de service."
+      },
+      {
+        q:"Taux d'occupation en baisse de 18% sur 3 mois. Première action ?",
+        opts:[
+          {t:"Baisse drastique des tarifs.",pts:1,fb:"Baisser sans analyser peut dévaloriser l'image."},
+          {t:"Analyser les données et identifier les causes avant d'agir.",pts:2,fb:"Parfait ! Diagnostiquer avant d'agir est essentiel."},
+          {t:"Attendre que ça remonte avec la saison.",pts:0,fb:"L'attentisme face à une baisse de 18% est très risqué."},
+          {t:"Blâmer le service commercial.",pts:0,fb:"Le blame game ne résout rien."}
+        ], best:1,
+        expl:"Analysez : canaux (OTA vs. direct), segments (loisir vs. corporate), réputation en ligne, concurrence. Puis plan ciblé : packages, partenariats, campagnes digitales."
+      },
+      {
+        q:"Nouvel employé avec plusieurs erreurs en premier mois. Comment gérez-vous ?",
+        opts:[
+          {t:"Avertissement écrit immédiat.",pts:0,fb:"Sanctionner un nouveau sans accompagnement est contre-productif."},
+          {t:"Mentor expérimenté + formation renforcée + objectifs progressifs.",pts:2,fb:"Excellent ! L'accompagnement structuré est la meilleure réponse."},
+          {t:"Licenciement avant la fin de la période d'essai.",pts:0,fb:"Licencier sans accompagnement préalable est une perte de ressource et d'investissement."},
+          {t:"Vous faites son travail à sa place.",pts:0,fb:"Ne pas former l'employé ne règle rien à long terme."}
+        ], best:1,
+        expl:"Tout nouvel employé a besoin d'une intégration structurée. Identifiez les erreurs, proposez une formation ciblée, assignez un référent et fixez des objectifs progressifs. Le turnover coûte 50 à 200% d'un salaire annuel."
+      },
+      {
+        q:"Avis négatif 2/5 en ligne (chambre sale, personnel impoli). Que faites-vous ?",
+        opts:[
+          {t:"Vous ignorez l'avis.",pts:0,fb:"Les avis non répondus nuisent à votre réputation."},
+          {t:"Vous contestez publiquement la véracité du commentaire.",pts:0,fb:"Contester un avis publiquement est très mal perçu."},
+          {t:"Vous répondez professionnellement, reconnaissez l'expérience et proposez une solution.",pts:2,fb:"Parfait ! Une bonne réponse rassure aussi les futurs clients."},
+          {t:"Vous demandez à des proches de poster des faux avis positifs.",pts:0,fb:"Les faux avis sont contraires à l'éthique et sanctionnés par les plateformes."}
+        ], best:2,
+        expl:"Structure : remercier → s'excuser sincèrement → reconnaître les faits → citer les actions correctives → inviter à revenir. 89% des voyageurs lisent les réponses avant de réserver."
+      },
+      {
+        q:"Réduire les coûts de 15% sans impacter la qualité perçue. Comment ?",
+        opts:[
+          {t:"Réduire les effectifs de ménage.",pts:0,fb:"Réduire le ménage impacte directement la qualité des chambres."},
+          {t:"Réduire les portions et les amenities.",pts:0,fb:"Réduire la qualité visible dégrade l'expérience client."},
+          {t:"Auditer tous les postes de dépenses et optimiser sans impacter la qualité.",pts:2,fb:"Excellent ! L'optimisation intelligente préserve la qualité."},
+          {t:"Augmenter les prix pour compenser.",pts:0,fb:"Augmenter sans valeur ajoutée peut faire fuir les clients."}
+        ], best:2,
+        expl:"Leviers : renégociation fournisseurs, économies d'énergie, réduction du gaspillage alimentaire, optimisation des plannings selon l'occupation réelle."
+      },
+      {
+        q:"Équipe épuisée après 3 semaines de haute saison à 95% d'occupation. Comment maintenez-vous la motivation ?",
+        opts:[
+          {t:"Heures supp imposées sans compensation.",pts:0,fb:"Sans contrepartie, cela crée du ressentiment et mène au burn-out."},
+          {t:"Reconnaissance des efforts, compensations concrètes et moments de cohésion.",pts:2,fb:"Parfait ! La reconnaissance immédiate est le meilleur moteur."},
+          {t:"Vous ignorez la fatigue, le service passe avant tout.",pts:0,fb:"Ignorer la fatigue mène à l'absentéisme et à la baisse de qualité."},
+          {t:"Vous menacez de licenciements si les objectifs ne sont pas maintenus.",pts:0,fb:"La menace en période de rush détériore l'ambiance et la qualité."}
+        ], best:1,
+        expl:"En haute saison : plannings visibles, primes de performance, repas d'équipe, reconnaissance verbale quotidienne, petites attentions. Une équipe valorisée donne le meilleur d'elle-même."
+      },
+      {
+        q:"Client demande un service de baby-sitting non disponible à l'hôtel. Que faites-vous ?",
+        opts:[
+          {t:"'Non, nous ne proposons pas ce service.'",pts:0,fb:"Un simple non laisse le client sans solution."},
+          {t:"Vous trouvez un prestataire de confiance et facilitez la mise en contact.",pts:2,fb:"Excellent ! Être un facilitateur de solutions, même externes, c'est l'excellence."},
+          {t:"Vous promettez le service sans savoir si vous pouvez l'organiser.",pts:0,fb:"Une promesse non tenue est pire qu'un refus."},
+          {t:"Vous suggérez un concurrent qui propose ce service.",pts:1,fb:"Orienter aide, mais vous faites perdre la main sur la relation client."}
+        ], best:1,
+        expl:"Le réseau de partenaires locaux fiables est un avantage concurrentiel. La culture du 'oui conditionnel' : 'Laissez-moi vous trouver la meilleure solution disponible.'"
+      },
+      {
+        q:"Incendie mineur en cuisine à 19h pendant le dîner (40 clients). Première action ?",
+        opts:[
+          {t:"Vous courez éteindre l'incendie vous-même.",pts:0,fb:"S'exposer au danger sans évaluation va à l'encontre des protocoles de sécurité."},
+          {t:"Vous activez le plan d'évacuation, alertez les secours et guidez calmement les clients.",pts:2,fb:"Parfait ! Sécurité des personnes, communication calme, appel aux secours."},
+          {t:"Vous tentez de dissimuler l'incident pour ne pas paniquer les clients.",pts:0,fb:"Dissimuler une urgence met des vies en danger et est illégal."},
+          {t:"Vous appelez le propriétaire pour qu'il décide.",pts:0,fb:"En urgence, chaque seconde compte. Le manager doit agir immédiatement."}
+        ], best:1,
+        expl:"Protocole : 1) Alerter les secours (18/112) 2) Déclencher l'alarme 3) Évacuer calmement 4) Couper alimentation gaz/électricité 5) Appel aux points de rassemblement 6) Accueillir les secours."
+      },
+      {
+        q:"Quelle est la qualité la plus fondamentale d'un excellent manager hôtelier ?",
+        opts:[
+          {t:"Être strict et imposer une discipline de fer.",pts:0,fb:"La stricte autorité sans bienveillance génère de la peur, pas de l'excellence."},
+          {t:"Savoir tout faire soi-même.",pts:1,fb:"Connaître tous les métiers est utile, mais l'incapacité à déléguer est un frein."},
+          {t:"Écouter, inspirer et développer chaque membre de son équipe tout en maintenant l'excellence.",pts:2,fb:"Exactement ! Le management serviteur crée les équipes les plus performantes."},
+          {t:"Maximiser les profits à tout prix.",pts:0,fb:"La rentabilité doit être une conséquence, pas la seule finalité."}
+        ], best:2,
+        expl:"Les meilleurs managers hôteliers : intelligence émotionnelle élevée, vision stratégique, passion du service, capacité à développer les talents, résilience et humilité. La rentabilité suit naturellement."
+      }
+    ]
+  }
+];
+
+// ═══════════════════════════ STATE ════════════════════════════════════════
+let activeQuiz = null, curQ = 0, score = 0, answered = false, savedScores = [];
+let activeLevel = 'all';
+
+// ═══════════════════════════ QUIZ GRID ════════════════════════════════════
+
+function renderQuizGrid() {
+  const grid = document.getElementById('quizChoiceGrid');
+  grid.innerHTML = QUIZZES.map((q, i) => `
+    <div class="qcard" data-level="${q.level}" onclick="launchQuiz(${i})" style="${activeLevel !== 'all' && q.level !== activeLevel ? 'display:none' : ''}">
+      <span class="qcard-icon">${q.icon}</span>
+      <span class="diff-badge ${q.level}">${q.levelFr}</span>
+      <h3>${q.shortTitle}</h3>
+      <p>${q.desc}</p>
+      <div class="qcard-info">
+        <span class="qbadge">${q.qs.length} questions</span>
+        <span class="qbadge">Score /${q.max}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterLevel(level) {
+  activeLevel = level;
+  document.querySelectorAll('.diff-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.level === level);
+  });
+  document.querySelectorAll('#quizChoiceGrid .qcard').forEach(card => {
+    card.style.display = (level === 'all' || card.dataset.level === level) ? '' : 'none';
+  });
+}
+
+// ═══════════════════════════ QUIZ ═════════════════════════════════════════
+
+function launchQuiz(idx) {
+  activeQuiz = idx;
+  curQ = 0; score = 0; answered = false; savedScores = [];
+  document.getElementById('quizChoiceGrid').style.display = 'none';
+  document.getElementById('diffFilters').style.display = 'none';
+  document.getElementById('scoreScreen').classList.remove('show');
+  document.getElementById('quizArea').style.display = 'block';
+  const quiz = QUIZZES[idx];
+  document.getElementById('quizTitle').textContent = quiz.title;
+  document.getElementById('maxScore').textContent = quiz.max;
+  document.getElementById('qTotal').textContent = quiz.qs.length;
+  document.getElementById('nextBtn').onclick = handleNext;
+  renderQ();
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+}
+
+function renderQ() {
+  answered = false;
+  document.getElementById('warnBox').classList.remove('shake');
+  const quiz = QUIZZES[activeQuiz];
+  const q = quiz.qs[curQ];
+  const pct = Math.round(curQ / quiz.qs.length * 100);
+  document.getElementById('qNum').textContent = curQ + 1;
+  document.getElementById('liveScore').textContent = score;
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('qPct').textContent = pct + '%';
+  document.getElementById('nextBtn').textContent = curQ < quiz.qs.length - 1 ? 'Valider →' : 'Voir mon résultat →';
+
+  const LETTERS = ['A','B','C','D'];
+  const box = document.createElement('div');
+  box.className = 'q-box active';
+  box.id = 'activeQBox';
+  box.innerHTML = `
+    <div class="q-num">Question ${curQ+1} / ${quiz.qs.length}</div>
+    <div class="q-text">${tagTerms(q.q)}</div>
+    <div class="options" id="opts">
+      ${q.opts.map((o,i) => `
+        <div class="opt" id="opt${i}" onclick="selectOpt(${i})">
+          <div class="opt-letter">${LETTERS[i]}</div>
+          <div class="opt-text">${tagTerms(o.t)}<div class="opt-fb"></div></div>
+        </div>
+      `).join('')}
+    </div>
+    <div class="expl-box" id="explBox">${tagTerms(q.expl)}</div>
+  `;
+  const container = document.getElementById('qContainer');
+  container.innerHTML = '';
+  container.appendChild(box);
+}
+
+function selectOpt(i) {
+  if (answered) return;
+  document.querySelectorAll('.opt').forEach(el => el.classList.remove('selected'));
+  document.getElementById('opt'+i).classList.add('selected');
+  document.getElementById('warnBox').classList.remove('shake');
+}
+
+function getSelected() {
+  for (let i=0;i<4;i++) {
+    const el = document.getElementById('opt'+i);
+    if (el && el.classList.contains('selected')) return i;
+  }
+  return -1;
+}
+
+function handleNext() {
+  if (answered) { advance(); return; }
+  const sel = getSelected();
+  if (sel === -1) {
+    const w = document.getElementById('warnBox');
+    w.classList.remove('shake');
+    void w.offsetWidth;
+    w.classList.add('shake');
+    return;
+  }
+  answered = true;
+  const q = QUIZZES[activeQuiz].qs[curQ];
+  const pts = q.opts[sel].pts;
+  score += pts;
+  savedScores.push({sel, pts});
+  document.getElementById('liveScore').textContent = score;
+
+  for (let i=0;i<4;i++) {
+    const el = document.getElementById('opt'+i);
+    el.classList.add('locked');
+    const fb = el.querySelector('.opt-fb');
+    if (i === sel) {
+      el.classList.remove('selected');
+      if (i === q.best) { el.classList.add('correct'); fb.textContent = '✓ '+q.opts[i].fb; }
+      else              { el.classList.add('wrong');   fb.textContent = '✗ '+q.opts[i].fb;
+        const bestEl = document.getElementById('opt'+q.best);
+        bestEl.classList.add('correct');
+        bestEl.querySelector('.opt-fb').textContent = '✓ '+q.opts[q.best].fb;
+      }
+    }
+  }
+  document.getElementById('explBox').classList.add('show');
+  document.getElementById('nextBtn').textContent = curQ < QUIZZES[activeQuiz].qs.length - 1 ? 'Question suivante →' : 'Voir mon résultat →';
+}
+
+function advance() {
+  curQ++;
+  if (curQ >= QUIZZES[activeQuiz].qs.length) showScore();
+  else renderQ();
+}
+
+function showScore() {
+  document.getElementById('quizArea').style.display = 'none';
+  const screen = document.getElementById('scoreScreen');
+  screen.classList.add('show');
+  const quiz = QUIZZES[activeQuiz];
+  const max = quiz.max;
+
+  document.getElementById('ringNum').textContent = score;
+  document.getElementById('ringDenom').textContent = '/'+max;
+
+  // Ring
+  const circumference = 2 * Math.PI * 65;
+  const offset = circumference - (score / max) * circumference;
+  const ring = document.getElementById('ringFill');
+  ring.style.setProperty('--dash', offset);
+  setTimeout(() => ring.classList.add('go'), 100);
+
+  // Badge
+  const ratio = score / max;
+  let pillClass, pillTxt, title, desc;
+  if (ratio >= 0.9)       { pillClass='b-green';  pillTxt='🏆 Manager d\'Excellence'; title='Exceptionnel ! Vous avez le profil d\'un vrai leader hôtelier.'; desc='Vos réponses démontrent une maîtrise remarquable. Empathie, réactivité et vision stratégique : votre équipe a de la chance de vous avoir.'; }
+  else if (ratio >= 0.7)  { pillClass='b-gold';   pillTxt='⭐ Bon Manager';           title='Très bien ! Vous avez de solides bases.';                        desc='Vous maîtrisez l\'essentiel. Quelques ajustements sur des situations complexes vous permettront d\'atteindre l\'excellence.'; }
+  else if (ratio >= 0.5)  { pillClass='b-orange'; pillTxt='📈 En développement';      title='Des bases prometteuses, continuez à progresser !';               desc='Vous avez compris plusieurs aspects, mais certaines situations complexes méritent encore réflexion. Relisez les modules et retentez !'; }
+  else                     { pillClass='b-red';    pillTxt='🌱 Manager débutant';      title='Vous avez beaucoup à apprendre, et c\'est normal !';             desc='Tout grand manager a commencé quelque part. Parcourez les modules de formation et repassez l\'évaluation, vous verrez vite la progression !'; }
+
+  document.getElementById('scorePill').className = 'score-badge-pill '+pillClass;
+  document.getElementById('scorePill').textContent = pillTxt;
+  document.getElementById('scoreTitle').textContent = title;
+  document.getElementById('scoreDesc').textContent = desc;
+
+  // Breakdown
+  const rows = document.getElementById('breakdownRows');
+  const qs = quiz.qs;
+  rows.innerHTML = savedScores.map((s,i) => {
+    const cls = s.pts === 2 ? 'c-green' : s.pts === 1 ? 'c-orange' : 'c-red';
+    const icon = s.pts === 2 ? '✓' : s.pts === 1 ? '~' : '✗';
+    const label = qs[i].q.length > 55 ? qs[i].q.slice(0,55)+'…' : qs[i].q;
+    return `<div class="bk-row"><span class="bk-q">${i+1}. ${label}</span><span class="bk-pts ${cls}">${icon} ${s.pts}/${qs[i].opts[0].pts===2||qs[i].opts[1].pts===2||qs[i].opts[2].pts===2||qs[i].opts[3].pts===2?2:1}pts</span></div>`;
+  }).join('');
+
+  screen.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function replayQuiz() {
+  document.getElementById('scoreScreen').classList.remove('show');
+  document.getElementById('ringFill').classList.remove('go');
+  launchQuiz(activeQuiz);
+}
+
+function backToChoice() {
+  document.getElementById('quizArea').style.display = 'none';
+  document.getElementById('scoreScreen').classList.remove('show');
+  document.getElementById('ringFill').classList.remove('go');
+  document.getElementById('quizChoiceGrid').style.display = 'grid';
+  document.getElementById('diffFilters').style.display = 'flex';
+  activeQuiz = null;
+  document.getElementById('quiz').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════════════════════════ MODULES ══════════════════════════════════════
+
+function openMod(idx) {
+  const m = MODS[idx];
+  document.getElementById('modImg').src = m.img;
+  document.getElementById('modImg').alt = m.title;
+  document.getElementById('modBody').innerHTML = `
+    <span class="ov-tag">${m.tag}</span>
+    <h2>${m.title}</h2>
+    <div style="background:rgba(201,168,76,.07);border-left:3px solid var(--gold);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1.1rem;">
+      <p style="font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;">💡 En simple</p>
+      <p style="font-size:.88rem;color:var(--text);line-height:1.75;margin:0;">${m.simple}</p>
+    </div>
+    <p>${m.intro}</p>
+    <p style="color:#fff;font-weight:600;margin-bottom:.5rem">Points clés à maîtriser :</p>
+    <ul>${m.pts.map(p=>`<li>${p}</li>`).join('')}</ul>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="#quiz" onclick="closeMod()" class="btn btn-gold" style="display:inline-flex">🎯 Tester ce module en quiz →</a>
+    </div>
+  `;
+  document.getElementById('modOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMod(e) {
+  if (e && e.target !== document.getElementById('modOverlay') && !e.target.classList.contains('ov-close')) return;
+  document.getElementById('modOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ═══════════════════════════ INIT ═════════════════════════════════════════
+renderQuizGrid();
+
+// ═══════════════════════════ NAV SCROLL + REVEAL ═══════════════════════════
+
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.rev').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('in');
+  });
+});
+document.querySelectorAll('.rev').forEach(el => {
+  if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('in');
+});
+</script>
+</body>
+</html>
