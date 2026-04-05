@@ -182,6 +182,35 @@
     .qcard-info { display: flex; justify-content: center; gap: .6rem; flex-wrap: wrap; }
     .qbadge { background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.2); color: var(--gold); font-size: .72rem; font-weight: 700; padding: .25rem .7rem; border-radius: 99px; }
 
+    /* ─── DICTIONNAIRE SEARCH ─── */
+    .dict-bar {
+      background: var(--dark3); border: 1px solid rgba(201,168,76,.18); border-radius: 14px;
+      padding: 1.3rem 1.6rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+    }
+    .dict-label { font-size: .82rem; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+    .dict-label strong { color: var(--gold); }
+    .dict-input-wrap { display: flex; gap: .6rem; flex: 1; min-width: 200px; }
+    .dict-input {
+      flex: 1; background: var(--dark4); border: 1.5px solid rgba(255,255,255,.08); border-radius: 8px;
+      color: var(--text); font-family: 'Inter', sans-serif; font-size: .9rem;
+      padding: .55rem 1rem; outline: none; transition: border-color .2s;
+    }
+    .dict-input:focus { border-color: rgba(201,168,76,.5); }
+    .dict-input::placeholder { color: var(--muted); }
+    .dict-search-btn {
+      background: var(--gold); color: var(--dark); border: none; border-radius: 8px;
+      padding: .55rem 1.2rem; font-size: .85rem; font-weight: 700; cursor: pointer;
+      font-family: 'Inter', sans-serif; white-space: nowrap; transition: background .2s;
+    }
+    .dict-search-btn:hover { background: var(--gold-light); }
+    .dict-result {
+      width: 100%; margin-top: .8rem; display: none;
+      padding: .75rem 1rem; border-radius: 8px; font-size: .87rem; line-height: 1.65;
+    }
+    .dict-result.found { background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.25); color: var(--text); }
+    .dict-result.notfound { background: rgba(224,85,85,.07); border: 1px solid rgba(224,85,85,.25); color: var(--muted); }
+    .dict-result-word { font-weight: 700; color: var(--gold); margin-right: .4rem; }
+
     /* ─── FILTRES DIFFICULTÉ ─── */
     .diff-filters { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
     .diff-btn {
@@ -499,6 +528,16 @@
       <p class="s-sub" style="margin:0 auto;">5 quiz de 3 niveaux — commencez par Facile et progressez. <strong style="color:var(--gold)">Cliquez sur les mots soulignés</strong> pour avoir leur définition en langage simple.</p>
     </div>
 
+    <!-- Dictionnaire -->
+    <div class="dict-bar rev" id="dictBar">
+      <div class="dict-label">📖 <strong>Dictionnaire</strong> — Tu ne comprends pas un mot ?</div>
+      <div class="dict-input-wrap">
+        <input class="dict-input" id="dictInput" type="text" placeholder="Tape le mot ici... ex: RevPAR, déléguer, feedback" onkeydown="if(event.key==='Enter') searchDict()" />
+        <button class="dict-search-btn" onclick="searchDict()">Chercher →</button>
+      </div>
+      <div class="dict-result" id="dictResult"></div>
+    </div>
+
     <!-- Filtres difficulté -->
     <div class="diff-filters rev" id="diffFilters">
       <button class="diff-btn active" data-level="all"    onclick="filterLevel('all')">Tous les niveaux</button>
@@ -614,7 +653,71 @@ const GLOSSARY = {
   "PDCA":            "Plan-Do-Check-Act — méthode pour améliorer continuellement : Planifier → Faire → Vérifier → Ajuster. On recommence en boucle pour progresser.",
   "corporate":       "Clientèle d'entreprise — des voyageurs qui viennent pour le travail. Souvent fidèles et nombreux, ils bénéficient de tarifs négociés avec l'hôtel.",
   "packages":        "Offres groupées qui combinent plusieurs services en un seul prix. Exemple : chambre + petit-déjeuner + accès spa à un tarif avantageux.",
-  "surbooking":      "Accepter plus de réservations que de chambres disponibles, en comptant sur les annulations. Risqué si trop de clients se présentent en même temps."
+  "surbooking":      "Accepter plus de réservations que de chambres disponibles, en comptant sur les annulations. Risqué si trop de clients se présentent en même temps.",
+
+  // ── Mots du quotidien en management ──────────────────────────────────
+  "collaborateur":   "Un membre de votre équipe. Quand on dit 'collaborateur', on parle d'un employé avec qui on travaille ensemble.",
+  "déléguer":        "Confier une tâche à quelqu'un d'autre plutôt que de tout faire soi-même. C'est essentiel pour un manager — vous ne pouvez pas tout faire seul.",
+  "bienveillant":    "Gentil, attentionné, qui veut le bien des autres. Un manager bienveillant écoute, comprend, et aide avant de juger.",
+  "cohésion":        "Quand une équipe est soudée, s'entend bien et travaille ensemble dans le même sens. Une bonne cohésion = une meilleure performance.",
+  "performant":      "Qui donne de bons résultats, qui fait son travail efficacement. Un employé performant atteint ses objectifs.",
+  "indicateur":      "Un chiffre qu'on suit régulièrement pour mesurer si on va dans la bonne direction. Exemple : nombre de clients satisfaits par semaine.",
+  "stratégie":       "Un plan d'action pour atteindre un objectif. Exemple : stratégie pour remplir l'hôtel en période creuse.",
+  "fidéliser":       "Faire en sorte qu'un client revienne. Un client fidèle est plus rentable qu'un nouveau client car il coûte moins cher à convaincre.",
+  "réclamation":     "Une plainte d'un client qui n'est pas satisfait. À traiter rapidement et sérieusement — c'est une chance de s'améliorer.",
+  "réservation":     "Quand un client retient une chambre à l'avance en s'engageant à venir. Peut être annulée selon les conditions.",
+  "taux d'occupation":"Le pourcentage de chambres occupées. Si vous avez 100 chambres et 80 sont occupées, votre taux d'occupation est de 80%.",
+  "benchmark":       "Comparer ses résultats à ceux des concurrents ou aux meilleures pratiques du secteur pour savoir où on en est.",
+  "standard":        "Le niveau de qualité minimum qu'on doit respecter dans chaque tâche. Exemple : standard d'accueil = sourire + bonjour + contact visuel.",
+  "procédure":       "Une façon précise et définie de faire quelque chose, étape par étape. Cela garantit que tout le monde fait les choses de la même façon.",
+  "rentabilité":     "La capacité à gagner plus d'argent qu'on en dépense. Un hôtel rentable fait des bénéfices.",
+  "marge":           "La différence entre ce qu'on gagne et ce qu'on dépense. Si vous vendez un plat 20€ et qu'il vous coûte 6€ à faire, la marge est de 14€.",
+  "budget":          "Le plan financier qui prévoit combien on va gagner et combien on va dépenser sur une période donnée (mois, année).",
+  "audit":           "Une vérification complète et détaillée de quelque chose — les comptes, les processus, la qualité du service — pour trouver ce qui peut être amélioré.",
+  "prestataire":     "Une entreprise extérieure à qui vous faites appel pour un service spécifique. Exemple : une société de nettoyage, un traiteur.",
+  "fournisseur":     "Quelqu'un qui vous vend des produits ou des matières premières. Exemple : le fournisseur de linge de lit, le fournisseur de café.",
+  "désengagement":   "Quand un employé ne s'investit plus dans son travail, perd sa motivation. Signe qu'il faut agir rapidement.",
+  "empathie":        "La capacité à se mettre à la place des autres et comprendre ce qu'ils ressentent. Très important face à un client ou un employé mécontent.",
+  "proactif":        "Qui agit avant que les problèmes n'arrivent, qui anticipe. Un manager proactif ne subit pas les situations, il les prépare.",
+  "surclassement":   "Donner au client une chambre meilleure (plus grande, meilleure vue) que celle qu'il a payée. Geste très apprécié.",
+  "no-show":         "Un client qui a fait une réservation mais qui ne se présente pas sans annuler. Représente une perte de revenu.",
+  "lobby":           "Le hall d'entrée d'un hôtel — la première chose que le client voit en arrivant. Très important pour la première impression.",
+  "room service":    "Service qui livre la nourriture et les boissons directement dans la chambre du client, à toute heure.",
+  "concierge":       "Personne à la réception qui aide les clients pour tout type de demande : réservations de restaurant, taxis, excursions, conseils locaux.",
+  "astreinte":       "Le fait d'être disponible en dehors de ses heures normales de travail pour répondre aux urgences.",
+  "formation":       "Apprendre de nouvelles compétences ou améliorer les siennes. Investir dans la formation de votre équipe, c'est investir dans la qualité de votre service.",
+  "objectif":        "Un but précis à atteindre dans un délai donné. Exemple : augmenter la satisfaction client de 10% d'ici 3 mois.",
+  "feedback":        "Retour d'information — ce qu'un client ou un employé vous dit sur votre travail pour vous aider à vous améliorer. Positif ou négatif, c'est un cadeau.",
+  "conflit":         "Un désaccord ou une tension entre deux personnes ou deux équipes. Le rôle du manager est de le résoudre rapidement avant qu'il s'aggrave.",
+  "sanction":        "Une punition donnée à un employé qui a commis une faute. Elle doit être proportionnelle et précédée d'un avertissement sauf faute grave.",
+  "avertissement":   "Un document officiel remis à un employé pour lui signaler une faute. C'est souvent la première étape avant une sanction plus grave.",
+  "résiliation":     "Mettre fin à un contrat de façon officielle — contrat d'un employé ou contrat avec un fournisseur.",
+  "intelligence émotionnelle": "La capacité à reconnaître, comprendre et gérer ses propres émotions et celles des autres. Très important pour un bon manager.",
+  "management":      "L'ensemble des techniques pour diriger, organiser et motiver une équipe vers un objectif commun.",
+  "leadership":      "La capacité à inspirer et guider les autres. Un leader donne envie de le suivre, pas juste peur de lui désobéir.",
+  "motivation":      "L'envie et l'énergie qu'on a pour faire son travail. Le rôle du manager est de maintenir la motivation de son équipe.",
+  "polyvalent":      "Quelqu'un qui sait faire plusieurs tâches différentes. En hôtellerie, avoir des employés polyvalents est très précieux.",
+  "anticipation":    "Prévoir les problèmes avant qu'ils n'arrivent et se préparer. Un bon manager anticipe, il ne subit pas.",
+  "satisfaction client": "Le niveau de contentement d'un client après son séjour. On le mesure souvent avec des questionnaires ou des notes en ligne.",
+  "image de marque": "La réputation et la perception qu'ont les gens de votre hôtel. Une bonne image attire plus de clients.",
+  "chiffre d'affaires": "L'argent total gagné par l'hôtel avant de déduire les dépenses. Différent du bénéfice.",
+  "bénéfice":        "L'argent qui reste après avoir payé toutes les dépenses. C'est ce que l'hôtel gagne vraiment.",
+  "charges":         "Les dépenses régulières de l'hôtel : salaires, loyer, énergie, nourriture, entretien...",
+  "ressources humaines": "Le service qui s'occupe des employés : recrutement, paie, formation, conflits. Souvent appelé 'RH'.",
+  "recrutement":     "Le processus de chercher et choisir de nouveaux employés pour rejoindre l'équipe.",
+  "intégration":     "La période où un nouvel employé apprend à connaître l'hôtel, ses collègues et son travail. Une bonne intégration réduit le turnover.",
+  "manager":         "Responsable d'une équipe. Son rôle est d'organiser, motiver, et s'assurer que les objectifs sont atteints.",
+  "directeur":       "Responsable de l'ensemble de l'hôtel ou d'un grand département. Au-dessus du manager dans la hiérarchie.",
+  "hiérarchie":      "L'organisation des responsabilités du bas vers le haut. Chacun sait à qui il répond et qui il manage.",
+  "réunion":         "Moment où l'équipe se retrouve pour communiquer, partager des informations et prendre des décisions ensemble.",
+  "compte rendu":    "Document écrit qui résume ce qui a été dit et décidé pendant une réunion.",
+  "priorité":        "Ce qui est le plus important et doit être fait en premier. Savoir prioriser est une compétence clé du manager.",
+  "efficacité":      "Faire les choses bien et obtenir de bons résultats. Un manager efficace atteint ses objectifs sans gaspiller de ressources.",
+  "qualité":         "Le niveau d'excellence d'un service ou d'un produit. En hôtellerie, la qualité est ce qui fidélise les clients.",
+  "plainte":         "Quand un client exprime son mécontentement sur quelque chose. À traiter sérieusement et rapidement.",
+  "compensation":    "Ce qu'on offre à un client pour compenser une mauvaise expérience : réduction, surclassement, repas offert...",
+  "protocole":       "Un ensemble de règles précises à suivre dans une situation particulière. Exemple : protocole d'accueil des VIP.",
+  "département":     "Un service de l'hôtel avec une fonction spécifique. Exemples : département réception, département housekeeping, département restauration."
 };
 
 // ═══════════════════════════ GLOSSAIRE — FONCTIONS ════════════════════════
@@ -656,6 +759,29 @@ document.addEventListener('click', e => {
     hideGloss();
   }
 });
+
+// ═══════════════════════════ DICTIONNAIRE SEARCH ══════════════════════════
+function searchDict() {
+  const input = document.getElementById('dictInput').value.trim().toLowerCase();
+  const result = document.getElementById('dictResult');
+  if (!input) return;
+
+  // Cherche correspondance exacte d'abord, puis partielle
+  const exactKey = Object.keys(GLOSSARY).find(k => k.toLowerCase() === input);
+  const partialKey = !exactKey && Object.keys(GLOSSARY).find(k =>
+    k.toLowerCase().includes(input) || input.includes(k.toLowerCase())
+  );
+  const key = exactKey || partialKey;
+
+  result.style.display = 'block';
+  if (key) {
+    result.className = 'dict-result found';
+    result.innerHTML = `<span class="dict-result-word">${key} :</span>${GLOSSARY[key]}`;
+  } else {
+    result.className = 'dict-result notfound';
+    result.innerHTML = `❌ Le mot "<strong>${input}</strong>" n'est pas encore dans notre dictionnaire. Essaie un autre mot ou vérifie l'orthographe.`;
+  }
+}
 
 // ═══════════════════════════ DONNÉES MODULES ═══════════════════════════════
 const MODS = [
